@@ -4,14 +4,12 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
             showProducts(data.products);
         })
-        .catch(error => {
-            console.error("Error al obtener los productos:", error);
-        });
+        
 });
 
 function showProducts(products) {
     const container = document.querySelector(".card-container");
-    container.innerHTML = ""; // Limpiar el contenido anterior
+    container.innerHTML = ""; 
 
     products.forEach(product => {
         const productElement = document.createElement("div");
@@ -20,9 +18,9 @@ function showProducts(products) {
         productElement.innerHTML = `
             <img src="${product.image}" alt="${product.name}">
             <h2>${product.name}</h2>
-            <p>${product.description}</p>
-            <p><strong>Precio:</strong> $${product.cost}</p>
-            <p><strong>Cantidad Vendidos:</strong> ${product.soldCount}</p>
+            <p1>${product.description}</p1>
+            <p2>$${product.cost}</p2>
+            <p3> ${product.soldCount} ventas </p3>
         `;
 
         container.appendChild(productElement);
