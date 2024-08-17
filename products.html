@@ -10,6 +10,48 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <style>
+    
+    .container {
+      margin-top: 3%;
+    }
+
+    /* Diseño tarjetas */
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 31%;
+      padding: 30px;
+      box-sizing: border-box;
+      text-align: center;
+      margin: 5px;
+    }
+
+    .card img {
+      max-width: 100%;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .card h2 {
+      font-size: 1.5em;
+      margin: 15px 0 10px;
+    }
+
+    .card p {
+      font-size: 1em;
+      margin: 10px 0;
+      color: #666;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -38,22 +80,48 @@
   </nav>
   <main class="pb-5 container">
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-         </div>
-      <h1>Nombre</h1>
-      <p>Descripcion</p>
-      <p>Precio</p>
+    
+      
+    <main class="pb-5 container">
+      <div class="card-container">
+        
+        <div class="card">
+          <img src="https://via.placeholder.com/150" alt="Imagen 1">
+          <h2>Título 1</h2>
+          <p>Descripción del producto 1.</p>
+          <p>Precio</p>
       <p>Cantidades vendidas</p>
-    </div>
-  </main>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
-    </div>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/150" alt="Imagen 2">
+          <h2>Título 2</h2>
+          <p>Descripción del producto 2.</p>
+          <p>Precio</p>
+      <p>Cantidades vendidas</p>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/150" alt="Imagen 3">
+          <h2>Título 3</h2>
+          <p>Descripción del producto 3.</p>
+          <p>Precio</p>
+      <p>Cantidades vendidas</p>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/150" alt="Imagen 4">
+          <h2>Título 4</h2>
+          <p>Descripción del producto 4.</p>
+          <p>Precio</p>
+      <p>Cantidades vendidas</p>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/150" alt="Imagen 5">
+          <h2>Título 5</h2>
+          <p>Descripción del producto 5.</p>
+          <p>Precio</p>
+      <p>Cantidades vendidas</p>
+    
+      </div>
+    </main>
   </footer>
   <div id="spinner-wrapper">
     <div class="lds-ring">
