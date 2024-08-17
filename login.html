@@ -9,9 +9,10 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+<script src="js/login.js"></script>
   <style>
     body {
-      background-color: rgb(248, 249, 250);
+      background-color: rgb(255, 217, 244);
     }
   </style>
 </head>
@@ -19,10 +20,12 @@
 <body>
   <main class="mt-5">
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+        <form id="loginForm" action="login.html">
+          <label for="usuario">Usuario: </label><input type="text" id="usuario" placeholder="Ingrese su usuario"> <br>
+          <label for="contraseña">Contraseña: </label><input type="password" id="contraseña" placeholder="Ingrese su contraseña"> <br>
+        <button type="submit">Ingresar</button>
+      </form>
       </div>
-    </div>
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -31,8 +34,6 @@
       </p>
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
-  </footer>
-  <script src="js/login.js"></script>
+    <footer>
 </body>
-
 </html>
