@@ -12,7 +12,29 @@
 <script src="js/login.js"></script>
   <style>
     body {
-      background-color: rgb(255, 217, 244);
+      background-color: #f9Fa83;
+    }
+    #loginForm {
+      background-color:  #C4F6C0;
+      border: 2px #33767F solid;
+      border-radius: 10px;
+      text-align: center;
+      padding: 20px;
+      color: #334957;
+      line-height: 1.5;
+      padding: 35px;
+    }
+    button {
+      background-color:  #C4F6C0;
+      border: 2px #33767F solid;
+      border-radius: 8px;
+      text-align: center;
+      padding-left: 25px;
+      padding-right: 25px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      color: #334957;
+      float: right;
     }
   </style>
 </head>
@@ -21,10 +43,10 @@
   <main class="mt-5">
     <div class="container">
         <form id="loginForm" action="login.html">
-          <label for="usuario">Usuario: </label><input type="text" id="usuario" placeholder="Ingrese su usuario"> <br>
+          <label for="usuario">Usuario: </label><input type="text" id="usuario" placeholder="Ingrese su usuario"> <br> <br>
           <label for="contraseña">Contraseña: </label><input type="password" id="contraseña" placeholder="Ingrese su contraseña"> <br>
-        <button type="submit">Ingresar</button>
-      </form>
+        </form> <br>
+          <button type="submit" >Ingresar</button>
       </div>
   </main>
   <footer class="text-muted">
