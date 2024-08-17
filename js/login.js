@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const contraseña = document.getElementById("contraseña").value.trim();
     let errorMensaje = "";
 
+    const usuarioCorrecto = "usuario";
+    const contraseñaCorrecta = "contra123";
+
 if (usuario === "") {
     errorMensaje += "El campo de usuario está vacío.";
 }
@@ -16,8 +19,10 @@ if (contraseña === "") {
 
 if (errorMensaje) {
     alert(errorMensaje);
+} else if (usuario === usuarioCorrecto && contraseña === contraseñaCorrecta) {
+    window.location.href = 'index.html';
 } else {
-    window.location.href = "index.html"; 
+    alert("Usuario o contraseña incorrectos.");
 }
 })
 });
