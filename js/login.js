@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
             alert(errorMensaje);
         } else {
             localStorage.setItem("sesionActiva", "true");
-            window.location.href = "index.html";
+            window.location.href = "../index.html";
         }
     })
 });
