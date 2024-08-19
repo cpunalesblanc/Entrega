@@ -1,10 +1,8 @@
 document.addEventListener("DOMContentLoaded", function(){
 
-    document.addEventListener("DOMContentLoaded", function() {
         if (localStorage.getItem("sesionActiva") !== "true") {
             window.location.href = "login.html";
-        }
-    });
+        };
     
     document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);
