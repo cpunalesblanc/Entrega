@@ -19,8 +19,8 @@ function showProducts(products) {
             <img src="${product.image}" alt="${product.name}">
             <h2>${product.name}</h2>
             <p1>${product.description}</p1>
-            <p2>$${product.cost}</p2>
-            <p3> ${product.soldCount} ventas </p3>
+           <p class="cost">$${product.cost}</p>
+            <p class="sold-count">${product.soldCount} ventas</p>
         `;
 
         container.appendChild(productElement);
