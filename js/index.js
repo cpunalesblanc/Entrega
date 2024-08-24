@@ -16,9 +16,4 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 103);
         window.location = "products.html"
     });
-    const sesionActiva = localStorage.getItem("sesionActiva");
-
-if (sesionActiva !== "true") {
-window.location.href = "login.html";
-}
 });
