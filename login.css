@@ -1,0 +1,27 @@
+body {
+    background-color: #f9Fa83;
+  }
+
+  #loginForm {
+    background-color: #C4F6C0;
+    border: 2px #33767F solid;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    color: #334957;
+    line-height: 1.5;
+    padding: 35px;
+  }
+
+  button {
+    background-color: #33767F;
+    border: 2px #33767F solid;
+    border-radius: 8px;
+    text-align: center;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: #FFFFFF;
+    float: right;
+  }
