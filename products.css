@@ -1,55 +1,55 @@
-/* Contenedor principal */
-.container {
-    margin-left: 10%;
-    margin-right: 10%;
-    padding-top: 20px;
-}
 
-/* Diseño de las tarjetas */
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
+  /* Diseño tarjetas */
+  .card-container {
+    
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     justify-content: flex-start;
     gap: 35px;
-    margin-top: 50px;
-}
+    margin-top: 100px;
 
-.card {
+  }
+
+  .card {
     background-color: #fff;
     border-radius: 10px;
-    border: 2px solid #C4F6C0;
+    border-color: #c4f6c0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 330px;
+    width: 100%;
     padding: 25px;
     text-align: left;
-}
+   
+    
+  }
 
-.card img {
+  .card img {
     max-width: 100%;
     border-radius: 10px 10px 0 0;
-}
+  }
 
-.card h2 {
-    font-size: 24px;
-    margin: 15px 0;
+  .card h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    margin: 15px 0 15px;
     color: #33767F;
     font-weight: bold;
-}
+  }
 
-.card p {
+  .card p1 {
+    font-family: Arial, Helvetica, sans-serif;
     color: #334957;
-    font-size: 14px;
-    margin-bottom: 15px;
-}
-
-.card .cost {
+    font-size: 10pt;
+    margin: 0 0 15px;
+  }
+  .cost {
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     color: #53A692;
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.card .sold-count {
+    font-size: 20pt;
+    margin: 0 0 15px;
+  }
+  .sold-count {
+    font-family: Arial, Helvetica, sans-serif;
     color: #334957;
-    font-size: 14px;
-}
+    font-size: 14pt;
+  }
