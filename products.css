@@ -1,0 +1,55 @@
+/* Contenedor principal */
+.container {
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 20px;
+}
+
+/* Diseño de las tarjetas */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 35px;
+    margin-top: 50px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    border: 2px solid #C4F6C0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 330px;
+    padding: 25px;
+    text-align: left;
+}
+
+.card img {
+    max-width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.card h2 {
+    font-size: 24px;
+    margin: 15px 0;
+    color: #33767F;
+    font-weight: bold;
+}
+
+.card p {
+    color: #334957;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.card .cost {
+    font-weight: bold;
+    color: #53A692;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card .sold-count {
+    color: #334957;
+    font-size: 14px;
+}
