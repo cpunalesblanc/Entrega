@@ -1,10 +1,12 @@
 /* Diseño tarjetas */
 .card-container {
-  margin-top: 50px;
-  margin-bottom: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 35px;
   max-width: 1200px;
-  padding-left: 15px;
-  padding-right: 15px;
+
+  
 }
 
 /* Estilo de las tarjetas */
@@ -30,7 +32,12 @@
   color: #33767F;
   font-weight: bold;
 }
-
+.card p {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #334957;
+  font-size: 10pt;
+  margin: 0 0 15px;
+}
 .card .cost {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
