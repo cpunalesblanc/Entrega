@@ -1,27 +1,63 @@
 body {
-    background-color: #f9Fa83;
+  background-color: #f9Fa83;
+}
+
+#loginForm {
+  background-color: #C4F6C0;
+  border: 2px #33767F solid;
+  border-radius: 10px;
+  padding: 35px;
+  color: #334957;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra los campos horizontalmente dentro del formulario */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+@media (min-width: 992px) { /* Aplicar los siguientes estilos solo en pantallas grandes y mayores */
+
+  .row {
+    width: 100%; /* Asegura que las filas ocupen todo el ancho del formulario */
+    display: flex;
+    justify-content: center; /* Centra el contenido de la fila */
   }
 
-  #loginForm {
-    background-color: #C4F6C0;
-    border: 2px #33767F solid;
-    border-radius: 10px;
-    text-align: center;
-    padding: 20px;
-    color: #334957;
-    line-height: 1.5;
-    padding: 35px;
+  .col-sm-4 {
+    display: flex;
+    justify-content: flex-end; /* Alinea las etiquetas a la derecha dentro de la columna */
+  }
+
+  .col-sm-8 {
+    display: flex;
+    justify-content: center; /* Centra los campos de texto dentro de la columna */
   }
 
   button {
+    background-color: #33767F; 
+    border: 2px #33767F solid;
+    border-radius: 8px;
+    color: #FFFFFF;
+    width: 25%; /* Ajusta el tamaño del botón al tamaño deseado */
+  }
+}
+
+@media (max-width: 991px) { /*Aplicar los siguientes estilos solo en pantallas medianas y menores*/
+  .row {
+    width: 100%; /*Asegura que las filas ocupen todo el ancho del contenedor*/
+  }
+  
+  .col-sm-8, .col-md-12, .col-lg-6 {
+    width: 100%; /* Asegura que ambos divs ocupen el mismo ancho */
+  }
+
+  .col-sm-4, .col-lg-2 {
+    width: 100%;
+  }
+  button {
+    width: 100%; /* Botón ancho completo en pantallas medianas y pequeñas */
     background-color: #33767F;
     border: 2px #33767F solid;
     border-radius: 8px;
-    text-align: center;
-    padding-left: 25px;
-    padding-right: 25px;
-    padding-top: 2px;
-    padding-bottom: 2px;
     color: #FFFFFF;
-    float: right;
   }
+}
