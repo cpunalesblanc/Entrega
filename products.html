@@ -12,8 +12,21 @@
   <link href="css/styles.css" rel="stylesheet">
 </head>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Verificar si hay una sesión activa
+    const sesionActiva = localStorage.getItem("sesionActiva");
+    const usuario = localStorage.getItem("usuario");
+
+    // Si la sesión está activa y existe un nombre de usuario, mostrarlo en la barra de navegación
+    if (sesionActiva && usuario) {
+      document.getElementById('usernameDisplay').textContent = `Bienvenido, ${usuario}`;
+    }
+  });
+</script>
+
 <body>
-  <nav class="navbar navbar-expand-lg custom-navbar">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,7 +35,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link active" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -30,38 +43,24 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
+          <li class="nav-item">
+          </li>
+          <li class="nav-item">
+            <!-- Aquí se mostrará el nombre del usuario -->
+            <span class="nav-link" id="usernameDisplay"></span>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
   
   <main class="container">
-    <div class="row card-container">
-      <div class="col-lg-4 col-md-6 col-12">
+    <div class="container mt-5 mb-4">
+      <div class="row card-container">
+  
+
         <!-- Aquí se insertarán las tarjetas dinámicamente -->
-        <div class="card">
-          <img src="image1.jpg" alt="Imagen 1">
-          <h1>Título de la Tarjeta 1</h1>
-          <div class="cost">$100</div>
-          <div class="sold-count">Vendidos: 20</div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 col-12">
-        <div class="card">
-          <img src="image2.jpg" alt="Imagen 2">
-          <h1>Título de la Tarjeta 2</h1>
-          <div class="cost">$150</div>
-          <div class="sold-count">Vendidos: 30</div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 col-12">
-        <div class="card">
-          <img src="image3.jpg" alt="Imagen 3">
-          <h1>Título de la Tarjeta 3</h1>
-          <div class="cost">$200</div>
-          <div class="sold-count">Vendidos: 40</div>
-        </div>
-      </div>
+        
     </div>
   </main>
 

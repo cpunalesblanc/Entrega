@@ -12,7 +12,7 @@ function showProducts(products) {
 
     products.forEach(product => {
         const productElement = document.createElement("div");
-        productElement.classList.add("col-md-6"); // Ajusta la clase para mostrar 2 tarjetas en una fila en tabletas
+        productElement.classList.add("col-lg-4", "col-md-6", "col-12"); // Asegúrate de que estas clases estén presentes
 
         productElement.innerHTML = `
             <div class="card">

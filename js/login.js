@@ -18,8 +18,15 @@ document.addEventListener("DOMContentLoaded", function () {
         if (errorMensaje) {
             alert(errorMensaje);
         } else {
+            // Almacena la sesión activa y el nombre del usuario en localStorage
             localStorage.setItem("sesionActiva", "true");
+            localStorage.setItem("usuario", usuario);
+            
+            // Redirige al index.html
             window.location.href = "../index.html";
         }
-    })
+        
+    
+    });
+
 });

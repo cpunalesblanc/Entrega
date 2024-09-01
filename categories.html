@@ -12,6 +12,19 @@
   <link href="css/styles.css" rel="stylesheet">
 </head>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Verificar si hay una sesión activa
+    const sesionActiva = localStorage.getItem("sesionActiva");
+    const usuario = localStorage.getItem("usuario");
+
+    // Si la sesión está activa y existe un nombre de usuario, mostrarlo en la barra de navegación
+    if (sesionActiva && usuario) {
+      document.getElementById('usernameDisplay').textContent = `Bienvenido, ${usuario}`;
+    }
+  });
+</script>
+
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
@@ -31,6 +44,10 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+          </li>
+          <li class="nav-item">
+            <!-- Aquí se mostrará el nombre del usuario -->
+            <span class="nav-link" id="usernameDisplay"></span>
           </li>
         </ul>
       </div>
