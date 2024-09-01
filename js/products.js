@@ -17,8 +17,8 @@ function showProducts(products) {
 
         productElement.innerHTML = `
             <img src="${product.image}" alt="${product.name}">
-            <h2>${product.name}</h2>
-            <p1>${product.description}</p1>
+            <h1>${product.name}</h1>
+            <p class>${product.description}</p class>
            <p class="cost">$${product.cost}</p>
             <p class="sold-count">${product.soldCount} ventas</p>
         `;

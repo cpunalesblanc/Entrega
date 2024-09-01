@@ -1,55 +1,90 @@
+/* Diseño tarjetas */
+.pb-5container{
+}
 
-  /* Diseño tarjetas */
-  .card-container {
-    
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: flex-start;
-    gap: 35px;
-    margin-top: 100px;
+.card-container {
+  margin: 100px auto; /* Margen superior e inferior para separación, auto en los laterales para centrar */
+  max-width: 1200px; /* Opcional: Establece un ancho máximo para el contenedor */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 35px;
+  padding-left: 70px;
+  padding-right: 70px;
+}
 
-  }
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  border-color: #C4F6C0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 330px;
+  padding: 25px;
+  text-align: left;
+ 
+  
+}
 
-  .card {
-    background-color: #fff;
-    border-radius: 10px;
-    border-color: #c4f6c0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    padding: 25px;
-    text-align: left;
-   
-    
-  }
+.card img {
+  max-width: 100%;
+  border-radius: 10px 10px 0 0;
+}
 
-  .card img {
-    max-width: 100%;
-    border-radius: 10px 10px 0 0;
-  }
+.card h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  margin: 15px 0 15px;
+  color: #33767F;
+  font-weight: bold;
+}
 
-  .card h2 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 30px;
-    margin: 15px 0 15px;
-    color: #33767F;
-    font-weight: bold;
-  }
+.card {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #334957;
+  font-size: 10pt;
+  margin: 0 0 15px;
+}
+.cost {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #53A692;
+  font-size: 20pt;
+  margin: 0 0 15px;
+}
+.sold-count {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #334957;
+  font-size: 14pt;
+}
 
-  .card p1 {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #334957;
-    font-size: 10pt;
-    margin: 0 0 15px;
-  }
-  .cost {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    color: #53A692;
-    font-size: 20pt;
-    margin: 0 0 15px;
-  }
-  .sold-count {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #334957;
-    font-size: 14pt;
-  }
+
+/* Estilo general de la barra de navegación */
+.navbar.custom-navbar {
+background-color: #33767F; /* Fondo verde */
+padding: 10px 20px ;
+display: flex; /* Asegura que el contenedor sea flex */
+justify-content: flex-end; /* Alinea los elementos de navegación a la derecha */
+}
+
+/* Menú de navegación */
+.navbar-nav .nav-item {
+margin: 0; /* Elimina el margen entre los elementos */
+}
+
+/* Estilo de los enlaces */
+.navbar-nav .nav-link {
+font-family: Arial, Helvetica, sans-serif;
+font-size: 16px;
+color: #ffffff; /* Color del texto */
+transition: color 0.3s ease-in-out;
+}
+
+/* Efecto hover en los enlaces del menú */
+.navbar-nav .nav-link:hover {
+color: #F9FA83; /* Color de texto en hover */
+}
+
+
+.navbar-toggler-icon {
+background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"><path stroke="#334957" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>');
+}
