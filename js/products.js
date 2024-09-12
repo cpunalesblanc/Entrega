@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch("https://japceibal.github.io/emercado-api/cats_products/101.json")
         .then(response => response.json())
         .then(data => {
+            dataProducts = data.products;
             showProducts(data.products);
         });
 });
@@ -25,5 +26,23 @@ function showProducts(products) {
         `;
 
         container.appendChild(productElement);
+    });
+}
+
+// Barra de busqueda por nombre y descripción
+const searchInput = document.getElementById("searchInput").value;
+const searchButton = document.getElementById("searchButton");
+
+searchButton.addEventListener("click", () => {
+    // filtrar por productos que contengan searchInput en name o description
+    showProducts(incluyeAlguna(dataProducts, searchInput));
+});
+
+// https://es.stackoverflow.com/questions/525062/como-filtrar-dos-o-mas-palabras-en-una-cadena-de-texto-en-js
+
+function incluyeAlguna(original, buscadas) {
+    original.forEach((element) => {
+        buscadas.split(' ')
+        .some(p => original[element].name.includes(p) || original[element].description.includes(p))
     });
 }
