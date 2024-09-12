@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(response => response.json())
         .then(data => {
             dataProducts = data.products;
+
             showProducts(data.products);
         });
 });
@@ -35,14 +36,19 @@ const searchButton = document.getElementById("searchButton");
 
 searchButton.addEventListener("click", () => {
     // filtrar por productos que contengan searchInput en name o description
-    showProducts(incluyeAlguna(dataProducts, searchInput));
+    //showProducts(incluyeAlguna(dataProducts, searchInput));
+    const arraySearch = dataProducts.filter((element) => dataProducts[element].name.includes(searchInput) || dataProducts[element].description.includes(searchInput))
+    showProducts(arraySearch);
 });
 
 // https://es.stackoverflow.com/questions/525062/como-filtrar-dos-o-mas-palabras-en-una-cadena-de-texto-en-js
 
 function incluyeAlguna(original, buscadas) {
-    original.forEach((element) => {
-        buscadas.split(' ')
-        .some(p => original[element].name.includes(p) || original[element].description.includes(p))
-    });
+   //original.forEach((element) => {
+   //     buscadas.split(' ')
+   //     .some(p => original[element].name.includes(p) || original[element].description.includes(p))
+   // });
+
+
+
 }
