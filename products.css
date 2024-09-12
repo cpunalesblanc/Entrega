@@ -1,4 +1,4 @@
-/* Diseño tarjetas */
+/* Diseño del contenedor de las tarjetas */
 .card-container {
   display: flex;
   flex-wrap: wrap;
@@ -51,6 +51,36 @@
   color: #334957;
   font-size: 14pt;
 }
+
+/* Estilo para los controles de filtro y ordenamiento */
+#minPrice, #maxPrice, #sortOrder {
+  margin-bottom: 15px;
+  border: 1px solid #53A692;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+#filterBtn {
+  background-color: #53A692;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#filterBtn:hover {
+  background-color: #33767F;
+}
+
+.label {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #334957;
+}
+
 
 /* Diseño responsivo para tarjetas */
 

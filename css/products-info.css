@@ -1,0 +1,43 @@
+main, footer {
+    background-color: #fbffba;
+    display: flex;
+    align-items: flex-start;
+    }
+
+.nombre-producto {
+    padding-top: 1vw;
+    font-size: xx-large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bolder;
+}
+
+.categoria-producto {
+    font-size: larger;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.img-small {
+    display: flex;
+    flex-wrap: nowrap; /* Asegura que las imágenes estén en una sola fila */
+    justify-content: space-between; /* Espacio entre las imágenes */
+    width: 70%; /* Ocupa el 70% del ancho de la pantalla */;
+}
+
+.img-asociada {
+    margin: 2px; /* Espacio pequeño entre las imágenes */
+  }
+
+  .foto {
+    width: 70%;
+    margin: 2px;
+    height: auto; /* Mantiene la proporción de la imagen */
+  }
+  .foto img {
+    width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor .foto */
+    height: auto; /* Mantiene la proporción de la imagen */
+  }
+
+  .descycant{
+    float: right;
+    width: 29%;
+}
