@@ -30,8 +30,8 @@ function showProducts(products) {
 }
 
 // Barra de busqueda por nombre y descripción
-
 const searchButton = document.getElementById("searchButton");
+const searchInputElement = document.getElementById("searchInput");
 
 searchButton.addEventListener("click", () => {
     searchInput = document.getElementById("searchInput").value;
@@ -48,7 +48,11 @@ searchButton.addEventListener("click", () => {
     }  
 });
 
-
-
+searchInputElement.addEventListener("keypress", function(event) {
+    // If the user presses the "Enter" key on the keyboard
+    if (event.key === "Enter") {
+      searchButton.click();
+    }
+  });
 
 // busqueda mejor pero no pude hacerla andar: https://es.stackoverflow.com/questions/525062/como-filtrar-dos-o-mas-palabras-en-una-cadena-de-texto-en-js
