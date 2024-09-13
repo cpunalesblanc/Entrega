@@ -4,9 +4,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   margin-bottom: 35px;
-  max-width: 1200px;
-
-  
+  max-width: 1800px;
 }
 
 /* Estilo de las tarjetas */
@@ -15,9 +13,9 @@
   border-radius: 10px;
   border-color: #C4F6C0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 25px;
+  padding: 30px;
   text-align: left;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 
 .card img {
@@ -52,23 +50,34 @@
   font-size: 14pt;
 }
 
-/* Estilo para los controles de filtro y ordenamiento */
+#filterContainer {
+  margin-top: 2%;
+  gap: 10px; /* Espacio entre los elementos */
+}
+
+/* Diseño responsivo para los filtros */
+
+@media (max-width: 991px) {
+  #filterContainer {
+    flex-direction: column; /* Organiza los filtros verticalmente en pantallas móviles */
+    align-items: center;
+    gap: 15px; /* Ajusta el espacio entre elementos en móviles */
+  }
+}
+
 #minPrice, #maxPrice, #sortOrder {
-  margin-bottom: 15px;
-  border: 1px solid #53A692;
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 14px;
+  width: 160px; /* Ajusta el ancho de los inputs */
 }
 
 #filterBtn {
   background-color: #53A692;
   color: white;
-  padding: 10px 20px;
+  padding: 8px 15px;
   border: none;
-  border-radius: 5px;
+  border-radius: 3px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 12px;
+  margin-left: 20px;
 }
 
 #filterBtn:hover {
@@ -77,10 +86,10 @@
 
 .label {
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
   color: #334957;
+  font-size: 11px;
+  font-weight: normal;
 }
-
 
 /* Diseño responsivo para tarjetas */
 
