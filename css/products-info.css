@@ -1,0 +1,65 @@
+html, body {
+  height: 100%; /* El body y el html ocupen el 100% de la pantalla */
+  margin: 0;    /* Elimina el margen predeterminado */
+}
+
+body {
+  position: relative; /* Esto permite que los hijos usen position:absolute relativo al body (va a ser el padre) */
+  background-color: #fbffba;
+  display: flex; 
+  flex-direction: column; /* Organiza con flexbox el contenido en columna */
+}
+
+footer {
+  background-color: #fbffba;
+  margin-top: auto; /* Empuja el footer al final */
+}
+
+.foto {
+  width: 70%;
+}
+
+.img-small {
+  display: flex;
+  flex-wrap: nowrap; /* Asegura que las imagenes esten en una sola fila */
+  justify-content: space-between; /* Espacio entre las imagenes */
+  width: 70%; /* Ocupa el 70% del ancho de la pantalla */
+}
+
+.img-asociada {
+  margin: 2px; /* Espacio pequeño entre las imagenes para que no esten pegadas */
+}
+
+.descycant {
+  position: absolute;
+  top: 20vw; /* Alinea la descripcion en la parte superior */
+  right: 2vw; /* Alinea la descripcion a la derecha */
+  width: 30%;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  background-color: #C4F6C0;
+  border: 2px #33767F solid;
+  border-radius: 10px;
+  padding: 2.4vw;
+}
+
+/* Media query para pantallas más pequeñas (móviles) */
+@media (max-width: 768px) {
+  main {
+    flex-direction: column; /* Hace que los elementos se apilen verticalmente */
+    align-items: center; /* Centra los elementos en pantallas pequeñas */
+  }
+
+  .img-small, .foto {
+    width: 100%; /* Las imagenes ocupan el 100% del ancho de la pantalla */
+  }
+
+  .descycant {
+    position: initial; /* Restablece su propiedad a su valor predeterminado */
+    width: 90%; /* La descripción ocupa el 100% del ancho de la pantalla */
+    text-align: center; /* Centra el texto dentro del div */
+    padding: 2vw;
+    margin: auto;
+    }
+}
