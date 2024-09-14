@@ -7,10 +7,10 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 });
 
-function showProducts(products) {
-    const container = document.querySelector(".card-container");
-    container.innerHTML = "";
+const container = document.querySelector(".card-container");
 
+function showProducts(products) {
+    container.innerHTML = "";
     products.forEach(product => {
         const productElement = document.createElement("div");
         productElement.classList.add("col-lg-4", "col-md-6", "col-12"); // Asegúrate de que estas clases estén presentes
@@ -58,3 +58,29 @@ document.getElementById('sortOrder').addEventListener('change', function() {
 
     showProducts(sortedProducts);
 });
+
+// Barra de busqueda por nombre y descripción
+const searchButton = document.getElementById("searchButton");
+const searchInputElement = document.getElementById("searchInput");
+
+searchButton.addEventListener("click", () => {
+    searchInput = document.getElementById("searchInput").value;
+    arraySearch = productsData.filter(element => element.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+    element.description.toLowerCase().includes(searchInput.toLowerCase()))
+    console.log("search");
+    if (arraySearch.length == 0){
+        container.innerHTML = `<p id="notFound">No se encontraron productos</p>`;
+        console.log("search empty");
+    } else {
+        showProducts(arraySearch);
+        console.log("search succesfull");
+        console.log(arraySearch);
+    }  
+});
+
+searchInputElement.addEventListener("keypress", function(event) {
+    // If the user presses the "Enter" key on the keyboard
+    if (event.key === "Enter") {
+      searchButton.click();
+    }
+  });

@@ -116,3 +116,40 @@
     max-width: 100%;
   }
 }
+
+/* Para barra de busqueda por nombre */
+#searchBar {
+  text-align: center;
+  margin: 1em;
+}
+#searchInput, #searchButton {
+  font-size: large;
+  padding: 0.3em;
+  padding-left: 0.6em;
+  padding-right: 0.6em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-style: solid;
+  border-width: 0.1em;
+  border-radius: 1.5em;
+  border-color: #b7b7b8;
+}
+#searchButton {
+  background-color: #53A692;
+  color: white;
+  padding-top: 0.2em;
+}
+#imgLupa {
+  width: 1em;
+}
+#searchInput:focus {
+  outline: none;
+  background-color: rgb(232, 232, 232);
+}
+#searchButton:hover {
+  background-color: #33767F;
+  color: azure;
+}
+#searchButton:active {
+  background-color: #334957;
+  color: azure;
+}
