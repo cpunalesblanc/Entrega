@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
-    fetch("https://japceibal.github.io/emercado-api/cats_products/101.json")
+    const categoryId = localStorage.getItem("catID");  // Obtener el identificador de la categoria guardado en el localStorage
+    if (!categoryId) {
+        console.error("No se ha seleccionado ninguna categoría."); // Verificar si existe el identificador de la categoria y si no mostrar un mensaje o manejar el error
+        return;  // Salir de la función si no hay categoría seleccionada
+    }
+
+    fetch(`https://japceibal.github.io/emercado-api/cats_products/${categoryId}.json`)  // Solicitar los productos de la categoria seleccionada
         .then(response => response.json())
         .then(data => {
             productsData = data.products;
