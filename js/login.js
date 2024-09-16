@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("usuario", usuario);
             
             // Redirige al index.html
-            window.location.href = "../index.html";
+            window.location.href = "./index.html";
         }
         
     
