@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.querySelector('.categoria-producto').textContent = productData.category;
                 document.querySelector('.cantidad-vendida').textContent = `${productData.soldCount} ventas`;
                 document.querySelector('.desc').textContent = productData.description;
-                // document.querySelector('.precio').textContent = `$${productData.cost}`;
+                document.querySelector('.precio').textContent = `$${productData.cost}`;
 
                 // Mostrar la imagen principal desde la carpeta local 'img'
                 const imageFolderPath = 'img/';
@@ -46,4 +46,16 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         console.error("No se encontró el ID del producto en el almacenamiento local.");
     }
+
+
 });
+
+
+    //Fetch a comentarios
+    fetch("https://japceibal.github.io/emercado-api/")
+    .then(response => response.json())
+    .then(comentsData => {
+
+    })
+    .catch(error => {
+        console.error("Error al obtener la información del producto:", error)}

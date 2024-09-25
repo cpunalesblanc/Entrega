@@ -5,13 +5,13 @@ html, body {
 
 body {
   position: relative; /* Esto permite que los hijos usen position:absolute relativo al body (va a ser el padre) */
-  background-color: #fbffba;
+  background-color: #FFFFEC;
   display: flex; 
   flex-direction: column; /* Organiza con flexbox el contenido en columna */
 }
 
 footer {
-  background-color: #fbffba;
+  background-color: #FFFFEC;
   margin-top: auto; /* Empuja el footer al final */
 }
 
@@ -62,4 +62,17 @@ footer {
     padding: 2vw;
     margin: auto;
     }
+}
+
+#agregamos { /*estilos para el boton de agregar al carrito*/
+  background-color: green;
+  color: white;
+  float: right;
+  border-radius: 6px;
+  margin: 5px;
+  font-size: 15px;
+}
+
+nav {
+  background-color: #FEFFBA;
 }
