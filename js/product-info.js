@@ -43,19 +43,32 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => {
                 console.error("Error al obtener la información del producto:", error);
             });
+
+        //Fetch a comentarios  
+        fetch(`https://japceibal.github.io/emercado-api/products_comments/${productId}.json`)
+            .then(response => response.json())
+            .then(commentsData => {
+                const contenerdorComentarios = document.getElementById("contenedorComentarios");
+                contenerdorComentarios.innerHTML  = "";
+
+                commentsData.forEach(comment => {
+                    contenerdorComentarios.innerHTML += `
+                    <div class="comentario">
+                    <p class="comentarioUser">${comment.user}: ${comment.description}</p>
+                    <p class="comentarioDateTime">${comment.dateTime}</p>
+                    <p class="comentarioScore">${comment.score}</p>
+                    </div>
+                    `;
+
+                });
+            })
+            .catch(error => {
+                console.error("Error al obtener la información del producto:", error);
+            });
+
     } else {
         console.error("No se encontró el ID del producto en el almacenamiento local.");
     }
 
 
 });
-
-
-    //Fetch a comentarios
-    fetch("https://japceibal.github.io/emercado-api/")
-    .then(response => response.json())
-    .then(comentsData => {
-
-    })
-    .catch(error => {
-        console.error("Error al obtener la información del producto:", error)}

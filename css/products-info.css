@@ -73,6 +73,13 @@ footer {
   font-size: 15px;
 }
 
-nav {
+.encabezado {
   background-color: #FEFFBA;
+  padding-bottom: 10px;
+}
+
+#enviarComentario { /*estilos para boton de enviar comentarios*/
+  background-color: green;
+  color: white;
+  border-radius: 6px;
 }
