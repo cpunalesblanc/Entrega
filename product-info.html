@@ -9,6 +9,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/products-info.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/1c792b6638.js" crossorigin="anonymous"></script> <!--link FontAwesome-->
 </head>
 
 <body>
@@ -42,11 +43,15 @@
 
 
   <main>
+    <div class="encabezado"> 
+        <h4 class="volvemos">volver al listado  <button id="agregamos"><i class="fa-solid fa-cart-plus"></i> Agregar al carrito</button></h4>
+      </div>
+
     <div class="container">
       <div class="header">
         <div>
           <h1 class="nombre-producto" >Nombre del producto</h1>
-          <h2  class="categoria-producto">Categoría del producto</h2>
+          <h3 class="categoria-producto">Categoría del producto</h3>
       </div>
       <div class="foto"> FOTO
       </div>
@@ -59,7 +64,21 @@
       <div class="descycant">
         <p class="desc" >Descripción del producto: </p>
         <p class="cantidad-vendida" >Cantidades vendidas del producto: </p>
-      <!-- <div class="precio">Precio del producto</div> -->
+      <div class="precio">Precio del producto</div>
+    </div>
+    <div class="nuevoComentario">  
+    </div><textarea placeholder="Ingrese su comentario aquí..." rows="4" cols="50"></textarea>
+    <button id="enviarComentario">Enviar comentario</button>
+    <div class="rating-stars"></div>
+    </div>
+<div class="product-reviews">
+  <h2>Comentarios y puntuaciones</h2>
+</div>
+<div id="contenedorComentarios"></div>
+    <div class="related-products">
+      <h2>Productos Relacionados</h2>
+      <div class="product-list">
+              </div>
     </div>
   </main>
   <footer class="text-muted">

@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.querySelector('.categoria-producto').textContent = productData.category;
                 document.querySelector('.cantidad-vendida').textContent = `${productData.soldCount} ventas`;
                 document.querySelector('.desc').textContent = productData.description;
-                // document.querySelector('.precio').textContent = `$${productData.cost}`;
+                document.querySelector('.precio').textContent = `$${productData.cost}`;
 
                 // Mostrar la imagen principal desde la carpeta local 'img'
                 const imageFolderPath = 'img/';
@@ -43,7 +43,44 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => {
                 console.error("Error al obtener la información del producto:", error);
             });
+
+        //Fetch a comentarios  
+        fetch(`https://japceibal.github.io/emercado-api/products_comments/${productId}.json`)
+            .then(response => response.json())
+            .then(commentsData => {
+                const contenerdorComentarios = document.getElementById("contenedorComentarios");
+                contenerdorComentarios.innerHTML  = "";
+
+                commentsData.forEach(comment => {
+                    const stars = generateStars(comment.score);
+                    contenerdorComentarios.innerHTML += `
+                    <div class="comentario">
+                    <p class="comentarioUser"> <b>${comment.user}:</b> ${comment.description}</p>
+                    <p class="comentarioDateTime">${comment.dateTime} <span class="comentarioScore">${stars}</span></p>
+                    </div>
+                    `;
+
+                });
+            })
+            .catch(error => {
+                console.error("Error al obtener la información del producto:", error);
+            });
+
     } else {
         console.error("No se encontró el ID del producto en el almacenamiento local.");
     }
+
+    //Estrellas que se adaptan al comment.score
+    function generateStars(score) {
+        let stars = '';
+        for (let i = 1; i <= 5; i++) {
+            if (i <= score) {
+                stars += '<span class="star filled"><i class="fa-solid fa-star"></i></span>'; // Estrella llena (icono de FontAwesome)
+            } else {
+                stars += '<span class="star"><i class="fa-regular fa-star"></i></span>'; // Estrella vacía (icono de FontAwesome)
+            }
+        }
+        return stars;
+    }
+
 });

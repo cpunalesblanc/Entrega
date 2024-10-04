@@ -5,13 +5,13 @@ html, body {
 
 body {
   position: relative; /* Esto permite que los hijos usen position:absolute relativo al body (va a ser el padre) */
-  background-color: #fbffba;
+  background-color: #FFFFEC;
   display: flex; 
   flex-direction: column; /* Organiza con flexbox el contenido en columna */
 }
 
 footer {
-  background-color: #fbffba;
+  background-color: #FFFFEC;
   margin-top: auto; /* Empuja el footer al final */
 }
 
@@ -24,6 +24,7 @@ footer {
   flex-wrap: nowrap; /* Asegura que las imagenes esten en una sola fila */
   justify-content: space-between; /* Espacio entre las imagenes */
   width: 70%; /* Ocupa el 70% del ancho de la pantalla */
+  padding-right: 140px;
 }
 
 .img-asociada {
@@ -63,3 +64,32 @@ footer {
     margin: auto;
     }
 }
+
+#agregamos { /*estilos para el boton de agregar al carrito*/
+  background-color: green;
+  color: white;
+  float: right;
+  border-radius: 6px;
+  margin: 5px;
+  font-size: 15px;
+}
+
+.encabezado {
+  background-color: #FEFFBA;
+  padding-bottom: 10px;
+}
+
+#enviarComentario { /*estilos para boton de enviar comentarios*/
+  background-color: green;
+  color: white;
+  border-radius: 6px;
+}
+
+.fa-star{ /*estrellas llenas y vacías*/
+color: gold;
+}
+
+.nombre-producto , .categoria-producto {
+
+}
+
