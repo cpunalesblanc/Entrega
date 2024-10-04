@@ -24,6 +24,7 @@ footer {
   flex-wrap: nowrap; /* Asegura que las imagenes esten en una sola fila */
   justify-content: space-between; /* Espacio entre las imagenes */
   width: 70%; /* Ocupa el 70% del ancho de la pantalla */
+  padding-right: 140px;
 }
 
 .img-asociada {
@@ -83,3 +84,12 @@ footer {
   color: white;
   border-radius: 6px;
 }
+
+.fa-star{ /*estrellas llenas y vacías*/
+color: gold;
+}
+
+.nombre-producto , .categoria-producto {
+
+}
+
