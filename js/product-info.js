@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Verificar si el productId existe en el almacenamiento local
     if (productId) {
         // Hacer una solicitud a la API con el identificador del producto
-        fetch(`https://japceibal.github.io/emercado-api/products/${productId}.json`)
+        fetch(`https://japceibal.github.io/emercado-api/products/{productId}.json`)
             .then(response => response.json())
             .then(productData => {
                 // Mostrar la información del producto en la página
