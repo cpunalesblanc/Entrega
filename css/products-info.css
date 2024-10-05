@@ -89,9 +89,6 @@ footer {
 color: gold;
 }
 
-.nombre-producto , .categoria-producto {
-
-}
 
 html, body {
   height: 100%; /* El body y el html ocupen el 100% de la pantalla */
@@ -187,15 +184,10 @@ color: gold;
 .nombre-producto , .categoria-producto {
 
 }
-
 .related-products {
-  display: grid; /* Usar grid para el diseño */
-  grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
-  gap: 15px; /* Espacio entre productos */
-  padding: 20px; /* Espaciado alrededor del contenedor */
-  border: 1px solid #ccc; /* Bordes del contenedor */
-  border-radius: 8px; /* Bordes redondeados */
-  overflow: hidden; /* Oculta el desbordamiento */
+  display: flex; /* Usar flexbox para el contenedor */
+  flex-direction: column; /* Colocar elementos en columna */
+  margin-top: 20px; /* Espacio arriba */
 }
 
 .product-item {
@@ -216,3 +208,35 @@ color: gold;
   object-fit: cover; /* Asegura que la imagen cubra el área */
 }
 
+
+/* desde aca prueba */
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Espacio entre productos */
+  width: 100%; /* Ocupa todo el ancho disponible */
+  margin: 0 auto; /* Centrar el contenedor */
+}
+
+.producto {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  width: calc(33.333% - 20px); /* Tres columnas */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+}
+
+@media (max-width: 768px) {
+  .producto {
+      width: calc(50% - 20px); /* responsivo, Dos columnas en pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .producto {
+      width: 100%; /* Una columna en pantallas pequeñas */
+  }
+}
