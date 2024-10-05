@@ -70,6 +70,40 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         console.error("No se encontró el ID del producto en el almacenamiento local.");
     }
+    
+    // Evento para el botón de enviar comentario 
+document.getElementById('enviarComentario').addEventListener('click', function() {
+    const comentarioCaja = document.getElementById('comentarioCaja');
+    const comentarioTexto = comentarioCaja.value.trim();
+
+    if (comentarioTexto) {
+        // Agregar el comentario a la lista ya existente
+        agregarComentario(comentarioTexto);
+        comentarioCaja.value = ''; // Limpiar el campo de entrada después de enviar
+    } else {
+        alert("Por favor, ingresa un comentario.");
+    }
+});
+
+// Función para agregar el comentario en la página
+function agregarComentario(comentario) {
+    const contenedorComentarios = document.getElementById("contenedorComentarios");
+
+    const nuevoComentarioDiv = document.createElement('div');
+    nuevoComentarioDiv.classList.add('comentario');
+    
+    // tener un comentario de un usuario específico
+    const usuario = localStorage.getItem("usuario") || "Usuario Anónimo"; // Obtener usuario del localStorage
+    const stars = generateStars(5); // aca para generar el puntaje de las estrellas
+
+    nuevoComentarioDiv.innerHTML = `
+        <p class="comentarioUser"> <b>${usuario}:</b> ${comentario}</p>
+        <p class="comentarioDateTime">${new Date().toLocaleString()} <span class="comentarioScore">${stars}</span></p>
+    `;
+
+    contenedorComentarios.appendChild(nuevoComentarioDiv); // Agregar el nuevo comentario al contenedor
+}
+
 
     //Estrellas que se adaptan al comment.score
     function generateStars(score) {
