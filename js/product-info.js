@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
         return stars;
+    }
      // ** Nueva función para cargar productos relacionados **
      function cargarProductosRelacionados() {
         fetch(`https://japceibal.github.io/emercado-api/cats_products/101.json`)
