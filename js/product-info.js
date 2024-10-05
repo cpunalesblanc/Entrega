@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     imgElement.innerHTML = `<img src="${imageFolderPath}prod${productId}_${i}.jpg" alt="Imagen asociada ${i}" class="img-fluid small-image">`;
                     imgSmallContainer.appendChild(imgElement);
                 }
+                cargarProductosRelacionados(productData.category);
             })
             .catch(error => {
                 console.error("Error al obtener la información del producto:", error);
@@ -82,5 +83,42 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         return stars;
     }
+     // ** Nueva función para cargar productos relacionados **
+    function cargarProductosRelacionados(categoria) {
+        fetch(`https://japceibal.github.io/emercado-api/products.json`)
+            .then(response => response.json())
+            .then(allProducts => {
+                const productosRelacionados = allProducts.filter(producto => producto.category === categoria && producto.id !== productId);
+                mostrarProductosRelacionados(productosRelacionados);
+            })
+            .catch(error => {
+                console.error("Error al obtener productos relacionados:", error);
+            });
+    }
 
+    // ** Nueva función para mostrar los productos relacionados en la página **
+    function mostrarProductosRelacionados(productosRelacionados) {
+        const contenedor = document.querySelector('.product-list');
+        contenedor.innerHTML = ''; // Limpiar el contenedor
+
+        productosRelacionados.forEach(producto => {
+            const div = document.createElement('div');
+            div.classList.add('producto');
+
+            div.innerHTML = `
+                <img src="img/prod${producto.id}_1.jpg" alt="${producto.name}" class="img-fluid">
+                <h3>${producto.name}</h3>
+                <p>${producto.description}</p>
+                <button onclick="verProducto(${producto.id})">Ver Producto</button>
+            `;
+
+            contenedor.appendChild(div);
+        });
+    }
+
+    // ** Nueva función para redirigir a la página del producto seleccionado **
+    function verProducto(id) {
+        localStorage.setItem('selectedProductId', id);
+        window.location.href = `product-info.html?id=${id}`; // Cambia esto si la ruta es diferente
+    }
 });
