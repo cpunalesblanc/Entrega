@@ -82,45 +82,53 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
         return stars;
-    }
      // ** Nueva función para cargar productos relacionados **
-    function cargarProductosRelacionados(categoria) {
-        fetch(`https://japceibal.github.io/emercado-api/${products}.json`)
-            .then(response => response.json())
-            .then(allProducts => {
-                const productosRelacionados = allProducts.filter(producto => producto.category === categoria && producto.id !== productId);
-                console.log('Productos relacionados encontrados:', productosRelacionados);
+     function cargarProductosRelacionados() {
+        fetch(`https://japceibal.github.io/emercado-api/cats_products/101.json`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Respuesta de la API:', data);
+                const allProducts = data.products; // Accede al array de productos
+    
+                // Filtrar productos relacionados
+                const productosRelacionados = allProducts.filter(producto => producto.id !== productId); // Filtramos solo por ID
+    
                 mostrarProductosRelacionados(productosRelacionados);
             })
             .catch(error => {
                 console.error("Error al obtener productos relacionados:", error);
             });
     }
-
-    // ** Nueva función para mostrar los productos relacionados en la página **
+    
     function mostrarProductosRelacionados(productosRelacionados) {
         const contenedor = document.querySelector('.product-list');
         contenedor.innerHTML = ''; // Limpiar el contenedor
-
+    
         if (productosRelacionados.length === 0) {
-        contenedor.innerHTML = '<p>No hay productos relacionados disponibles.</p>';
-        return;
-    }
-        
+            contenedor.innerHTML = '<p>No hay productos relacionados disponibles.</p>';
+            return;
+        }
+            
         productosRelacionados.forEach(producto => {
             const div = document.createElement('div');
             div.classList.add('producto');
-
+    
             div.innerHTML = `
-                <img src="img/prod${producto.id}_1.jpg" alt="${producto.name}" class="img-fluid">
+                <img src="${producto.image}" alt="${producto.name}" class="img-fluid">
                 <h3>${producto.name}</h3>
                 <p>${producto.description}</p>
                 <button onclick="verProducto(${producto.id})">Ver Producto</button>
             `;
-
+    
             contenedor.appendChild(div);
         });
     }
+    
 
     // ** Nueva función para redirigir a la página del producto seleccionado **
     function verProducto(id) {
