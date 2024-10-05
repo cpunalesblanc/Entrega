@@ -89,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(allProducts => {
                 const productosRelacionados = allProducts.filter(producto => producto.category === categoria && producto.id !== productId);
+                console.log('Productos relacionados encontrados:', productosRelacionados);
                 mostrarProductosRelacionados(productosRelacionados);
             })
             .catch(error => {
