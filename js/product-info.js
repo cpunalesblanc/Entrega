@@ -101,6 +101,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const contenedor = document.querySelector('.product-list');
         contenedor.innerHTML = ''; // Limpiar el contenedor
 
+        if (productosRelacionados.length === 0) {
+        contenedor.innerHTML = '<p>No hay productos relacionados disponibles.</p>';
+        return;
+    }
+        
         productosRelacionados.forEach(producto => {
             const div = document.createElement('div');
             div.classList.add('producto');
