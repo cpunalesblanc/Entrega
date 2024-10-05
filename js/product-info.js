@@ -39,6 +39,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     imgElement.innerHTML = `<img src="${imageFolderPath}prod${productId}_${i}.jpg" alt="Imagen asociada ${i}" class="img-fluid small-image">`;
                     imgSmallContainer.appendChild(imgElement);
                 }
+                const categoryId = productData.category; // Extraer la categoría del producto
+                loadRelatedProducts(categoryId, productId); // Llamar a la función para cargar productos relacionados
             })
             .catch(error => {
                 console.error("Error al obtener la información del producto:", error);
@@ -70,6 +72,8 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error("No se encontró el ID del producto en el almacenamiento local.");
     }
 
+
+
     //Estrellas que se adaptan al comment.score
     function generateStars(score) {
         let stars = '';
@@ -82,5 +86,46 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         return stars;
     }
-
 });
+
+
+// Función para guardar el ID del producto seleccionado
+function saveSelectedProductId(productId) {
+    localStorage.setItem('selectedProductId', productId);
+}
+
+// Función para cargar productos relacionados
+function loadRelatedProducts(categoryId, productId) {
+    fetch(`https://japceibal.github.io/emercado-api/cats_products/101.json`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al obtener productos relacionados: ' + response.status);
+            }
+            return response.json();
+        })
+        .then(productsData => {
+            const relatedProductsContainer = document.querySelector('.product-list');
+            relatedProductsContainer.innerHTML = ''; // Limpiar contenido anterior
+            
+            // Filtrar productos por la misma categoría, excluyendo el producto actual
+            const relatedProducts = productsData.filter(product => product.category === categoryId && product.id !== productId);
+            console.log('Related Products:', relatedProducts); // Para verificar los productos
+            
+            // Mostrar solo los primeros 4 productos relacionados
+            relatedProducts.slice(0, 4).forEach(product => {
+                const productElement = document.createElement('div');
+                productElement.classList.add('related-product');
+                productElement.innerHTML = `
+                    <a href="product-info.html" onclick="saveSelectedProductId(${product.id})">
+                        <img src="img/prod${product.id}_1.jpg" alt="${product.name}" class="img-fluid small-image">
+                        <h4>${product.name}</h4>
+                        <p>USD ${product.cost}</p>
+                    </a>
+                `;
+                relatedProductsContainer.appendChild(productElement);
+            });
+        })
+        .catch(error => {
+            console.error("Error al obtener productos relacionados:", error);
+        });
+}

@@ -43,44 +43,63 @@
 
 
   <main>
-    <div class="encabezado"> 
-        <h4 class="volvemos">volver al listado  <button id="agregamos"><i class="fa-solid fa-cart-plus"></i> Agregar al carrito</button></h4>
-      </div>
-
-    <div class="container">
-      <div class="header">
-        <div>
-          <h1 class="nombre-producto" >Nombre del producto</h1>
-          <h3 class="categoria-producto">Categoría del producto</h3>
-      </div>
-      <div class="foto"> FOTO
-      </div>
-      
-      <div class="img-small">
-        <div class="img-asociada"> Img asociada</div>
-        <div class="img-asociada"> Img asociada</div>
-      </div>
-
-      <div class="descycant">
-        <p class="desc" >Descripción del producto: </p>
-        <p class="cantidad-vendida" >Cantidades vendidas del producto: </p>
-      <div class="precio">Precio del producto</div>
+    <div class="encabezado">
+        <div class="volver-listado">
+            <h4 class="volvemos">
+                <i class="fa-solid fa-arrow-left"></i> Volver al listado
+            </h4>
+        </div>
+        <div class="agregar-carrito">
+            <button id="agregamos">
+                <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+            </button>
+        </div>
     </div>
-    <div class="nuevoComentario">  
-    </div><textarea placeholder="Ingrese su comentario aquí..." rows="4" cols="50"></textarea>
-    <button id="enviarComentario">Enviar comentario</button>
-    <div class="rating-stars"></div>
+
+    <div class="content">
+        <div class="left-section">
+            <div class="foto"></div>
+            <div class="img-small"></div>
+        </div>
+
+        <div class="right-section"> <!-- Cambiar a un contenedor para la sección derecha -->
+            <div class="descycant">
+                <h1 class="nombre-producto"></h1>
+                <h3 class="categoria-producto"></h3>
+                <p class="desc"></p>
+                <p class="cantidad-vendida"></p>
+                <div class="precio"></div>
+            </div>
+
+            <div class="nuevoComentario">
+              <div class="rating-stars">
+                <span class="star" data-value="1"><i class="fa-regular fa-star"></i></span>
+                <span class="star" data-value="2"><i class="fa-regular fa-star"></i></span>
+                <span class="star" data-value="3"><i class="fa-regular fa-star"></i></span>
+                <span class="star" data-value="4"><i class="fa-regular fa-star"></i></span>
+                <span class="star" data-value="5"><i class="fa-regular fa-star"></i></span>
+              </div>
+              <textarea placeholder="Ingrese su comentario aquí..." rows="4" cols="50"></textarea>
+              <button id="enviarComentario">Enviar comentario</button>
+              <div class="rating-stars"></div>
+            </div>
+          </div>
     </div>
-<div class="product-reviews">
-  <h2>Comentarios y puntuaciones</h2>
-</div>
-<div id="contenedorComentarios"></div>
+
+    <div class="product-reviews">
+        <h2>Comentarios y puntuaciones</h2>
+        <div id="contenedorComentarios"></div>
+    </div>
+
     <div class="related-products">
       <h2>Productos Relacionados</h2>
-      <div class="product-list">
-              </div>
-    </div>
-  </main>
+      <div class="product-list"></div> <!-- Este es el contenedor donde se mostrarán los productos relacionados -->
+  </div>
+
+
+</main>
+
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
