@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Verificar si el productId existe en el almacenamiento local
     if (productId) {
         // Hacer una solicitud a la API con el identificador del producto
-        fetch(`https://japceibal.github.io/emercado-api/products/{productId}.json`)
+        fetch(`https://japceibal.github.io/emercado-api/products/${productId}.json`)
             .then(response => response.json())
             .then(productData => {
                 // Mostrar la información del producto en la página
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
      // ** Nueva función para cargar productos relacionados **
     function cargarProductosRelacionados(categoria) {
-        fetch(`https://japceibal.github.io/emercado-api/products.json`)
+        fetch(`https://japceibal.github.io/emercado-api/${products}.json`)
             .then(response => response.json())
             .then(allProducts => {
                 const productosRelacionados = allProducts.filter(producto => producto.category === categoria && producto.id !== productId);
