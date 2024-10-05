@@ -93,3 +93,126 @@ color: gold;
 
 }
 
+html, body {
+  height: 100%; /* El body y el html ocupen el 100% de la pantalla */
+  margin: 0;    /* Elimina el margen predeterminado */
+}
+
+body {
+  position: relative; /* Esto permite que los hijos usen position:absolute relativo al body (va a ser el padre) */
+  background-color: #FFFFEC;
+  display: flex; 
+  flex-direction: column; /* Organiza con flexbox el contenido en columna */
+}
+
+footer {
+  background-color: #FFFFEC;
+  margin-top: auto; /* Empuja el footer al final */
+}
+
+.foto {
+  width: 70%;
+}
+
+.img-small {
+  display: flex;
+  flex-wrap: nowrap; /* Asegura que las imagenes esten en una sola fila */
+  justify-content: space-between; /* Espacio entre las imagenes */
+  width: 70%; /* Ocupa el 70% del ancho de la pantalla */
+  padding-right: 140px;
+}
+
+.img-asociada {
+  margin: 2px; /* Espacio pequeño entre las imagenes para que no esten pegadas */
+}
+
+.descycant {
+  position: absolute;
+  top: 20vw; /* Alinea la descripcion en la parte superior */
+  right: 2vw; /* Alinea la descripcion a la derecha */
+  width: 30%;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  background-color: #C4F6C0;
+  border: 2px #33767F solid;
+  border-radius: 10px;
+  padding: 2.4vw;
+}
+
+/* Media query para pantallas más pequeñas (móviles) */
+@media (max-width: 768px) {
+  main {
+    flex-direction: column; /* Hace que los elementos se apilen verticalmente */
+    align-items: center; /* Centra los elementos en pantallas pequeñas */
+  }
+
+  .img-small, .foto {
+    width: 100%; /* Las imagenes ocupan el 100% del ancho de la pantalla */
+  }
+
+  .descycant {
+    position: initial; /* Restablece su propiedad a su valor predeterminado */
+    width: 90%; /* La descripción ocupa el 100% del ancho de la pantalla */
+    text-align: center; /* Centra el texto dentro del div */
+    padding: 2vw;
+    margin: auto;
+    }
+}
+
+#agregamos { /*estilos para el boton de agregar al carrito*/
+  background-color: green;
+  color: white;
+  float: right;
+  border-radius: 6px;
+  margin: 5px;
+  font-size: 15px;
+}
+
+.encabezado {
+  background-color: #FEFFBA;
+  padding-bottom: 10px;
+}
+
+#enviarComentario { /*estilos para boton de enviar comentarios*/
+  background-color: green;
+  color: white;
+  border-radius: 6px;
+}
+
+.fa-star{ /*estrellas llenas y vacías*/
+color: gold;
+}
+
+.nombre-producto , .categoria-producto {
+
+}
+
+.related-products {
+  display: grid; /* Usar grid para el diseño */
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
+  gap: 15px; /* Espacio entre productos */
+  padding: 20px; /* Espaciado alrededor del contenedor */
+  border: 1px solid #ccc; /* Bordes del contenedor */
+  border-radius: 8px; /* Bordes redondeados */
+  overflow: hidden; /* Oculta el desbordamiento */
+}
+
+.product-item {
+  border: 1px solid #eee; /* Bordes de cada producto */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 10px; /* Espacio interno */
+  text-align: center; /* Centrar contenido */
+  background: #fff; /* Fondo blanco */
+  display: flex; /* Usar flexbox para el contenido interno */
+  flex-direction: column; /* Alinear verticalmente */
+  justify-content: space-between; /* Espacio entre elementos */
+}
+
+.product-item img {
+  max-width: 100%; /* Asegura que la imagen no desborde */
+  height: auto; /* Mantiene la relación de aspecto */
+  height: 150px; /* Altura fija para las imágenes */
+  object-fit: cover; /* Asegura que la imagen cubra el área */
+}
+
