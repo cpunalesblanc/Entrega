@@ -21,9 +21,10 @@ html, body {
   padding: 5px ;
 }
 
-.volvemos {
-  background-color:  #FEFFBA;
-  border: #FEFFBA;
+#btn-volver-listado {
+  background-color: green;
+  color: white;
+  border-radius: 6px;
   float: left;
   margin: 5px;
   font-size: 12pt;
