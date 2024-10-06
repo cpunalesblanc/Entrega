@@ -49,12 +49,14 @@ footer {
   justify-content: space-between; /* Separa la imagen del texto */
   padding: 70px;
   background-color: #FFFFEC; /* Color de fondo de la página */
+  gap: 20px; /* Espacio entre la imagen y la descripción/comentario */
 }
 
 /* Sección de la imagen */
 .left-section {
   width: 50%; /* Ajustar el ancho de la sección izquierda */
   text-align: center;
+  flex: 1; /* La imagen ocupará la mitad del ancho disponible */
 }
 
 .foto img {
@@ -84,8 +86,7 @@ footer {
 }
 
 /* Detalles del producto */
-.descycant {
-    
+.descycant { 
     border-radius: 10px;
     padding: 20px;
     text-align: left;
@@ -133,10 +134,9 @@ footer {
   width: 100%; /* Hace que el contenedor ocupe el 100% del ancho disponible */
   max-width: 570px; /* Limita el ancho máximo del contenedor */
   margin: 15px;
-  
 }
 
-#enviarComentario {
+#enviarComentario { /*estilos para boton de enviar comentarios*/
   background-color: green;
   color: white;
   border-radius: 6px;
@@ -164,31 +164,6 @@ textarea {
   color: #ccc; /* Color por defecto de las estrellas */
   transition: color 0.2s; /* Transición suave para el cambio de color */
 }
-
-.star.filled {
-  color: gold; /* Color dorado para las estrellas llenas */
-}
-
-/* Para que la imagen y el texto estén alineados */
-.content {
-  display: flex;
-  gap: 20px; /* Espacio entre la imagen y la descripción/comentario */
-}
-
-.left-section {
-  flex: 1; /* La imagen ocupará la mitad del ancho disponible */
-}
-
-
-
-#enviarComentario { /*estilos para boton de enviar comentarios*/
-  background-color: green;
-  color: white;
-  border-radius: 6px;
-}
-
-.fa-star{} /*estrellas llenas y vacías*/
-
 
 .product-reviews {
   padding: 20px; /* Espaciado interno */
@@ -228,14 +203,6 @@ textarea {
   color: #ccc; /* Color gris para las estrellas vacías */
 }
 
-
-
-
-
-
-
-
-
 .related-products {
   display: flex; /* Usar flexbox para el contenedor */
   flex-direction: column; /* Colocar elementos en columna */
@@ -268,9 +235,6 @@ textarea {
   height: 150px; /* Altura fija para las imágenes */
   object-fit: cover; /* Asegura que la imagen cubra el área */
 }
-
-
-/* desde aca prueba */
 
 .product-list {
   display: flex;
