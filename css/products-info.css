@@ -210,6 +210,16 @@ textarea {
 }
 
 
+/* Estrellas completas */
+.fa-solid.fa-star {
+  color: gold; /* Establece las estrellas completas en amarillo */
+}
+
+/* Estrellas vacías */
+.fa-regular.fa-star {
+  color: gold; /* Color gris claro para las estrellas vacías */
+}
+
 .related-products {
   display: flex; /* Usar flexbox para el contenedor */
   flex-direction: column; /* Colocar elementos en columna */
