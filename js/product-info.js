@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // Recuperar el identificador del producto del almacenamiento local
     const productId = localStorage.getItem('selectedProductId');
 
+    document.getElementById("btn-volver-listado").addEventListener("click", function() {
+        window.location.href = "products.html"; // Redirige a products.html
+    });
+
     // Verificar si el productId existe en el almacenamiento local
     if (productId) {
         // Hacer una solicitud a la API con el identificador del producto
