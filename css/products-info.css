@@ -157,14 +157,9 @@ textarea {
 .rating-stars {
   display: flex; /* Alínea las estrellas en línea */
   cursor: pointer; /* Cambia el cursor al pasar sobre las estrellas */
+  color:  gold; /* Color para las estrellas vacías */
 }
 
-.star {
-  font-size: 24px; /* Tamaño de las estrellas */
-  margin-right: 5px; /* Espacio entre estrellas */
-  color: #ccc; /* Color por defecto de las estrellas */
-  transition: color 0.2s; /* Transición suave para el cambio de color */
-}
 
 .product-reviews {
   padding: 20px; /* Espaciado interno */
@@ -188,7 +183,7 @@ textarea {
 }
 
 .comentarioUser {
-  color: #0e0e0e; /* Color azul para el nombre de usuario */
+  color: #0e0e0e; /* Color para el nombre de usuario */
 }
 
 .comentarioDateTime {
@@ -196,13 +191,24 @@ textarea {
   color: #999; /* Color gris para la fecha y hora */
 }
 
-.star.filled {
-  color: gold; /* Color dorado para las estrellas llenas */
+.star {
+  font-size: 24px; /* Tamaño de las estrellas */
+  margin-right: 5px; /* Espacio entre estrellas */
+  color:  gold; /* Color  para las estrellas vacías */
 }
 
-.star {
-  color: #ccc; /* Color gris para las estrellas vacías */
+
+
+.star.filled {
+  color: gold; /* Cambia a color dorado/amarillo para las estrellas llenas */
 }
+
+
+/* Color de las estrellas ya seleccionadas */
+.star.selected {
+  color: gold; /* Estrellas amarillas después de ser seleccionadas */
+}
+
 
 .related-products {
   display: flex; /* Usar flexbox para el contenedor */

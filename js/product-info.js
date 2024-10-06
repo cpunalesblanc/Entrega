@@ -89,38 +89,60 @@ document.getElementById('enviarComentario').addEventListener('click', function()
     }
 });
 
-// Función para agregar el comentario en la página
+// Generar estrellas de puntaje
+function generateStars(rating) {
+    let starsHTML = '';
+    for (let i = 1; i <= 5; i++) {
+        starsHTML += (i <= rating) ? '<i class="fa-solid fa-star"></i>' : '<i class="fa-regular fa-star"></i>';
+    }
+    return starsHTML;
+}
+
+// Función para agregar comentario
 function agregarComentario(comentario) {
     const contenedorComentarios = document.getElementById("contenedorComentarios");
-
     const nuevoComentarioDiv = document.createElement('div');
     nuevoComentarioDiv.classList.add('comentario');
-    
-    // tener un comentario de un usuario específico
-    const usuario = localStorage.getItem("usuario") || "Usuario Anónimo"; // Obtener usuario del localStorage
-    const stars = generateStars(5); // aca para generar el puntaje de las estrellas
+
+    const usuario = localStorage.getItem("usuario") || "Usuario Anónimo";
+    const stars = generateStars(selectedRating);
 
     nuevoComentarioDiv.innerHTML = `
-        <p class="comentarioUser"> <b>${usuario}:</b> ${comentario}</p>
+        <p class="comentarioUser"><b>${usuario}:</b> ${comentario}</p>
         <p class="comentarioDateTime">${new Date().toLocaleString()} <span class="comentarioScore">${stars}</span></p>
     `;
 
-    contenedorComentarios.appendChild(nuevoComentarioDiv); // Agregar el nuevo comentario al contenedor
+    contenedorComentarios.appendChild(nuevoComentarioDiv);
+}
+
+// Capturar el evento de enviar comentario
+document.getElementById("enviarComentario").addEventListener("click", function() {
+    const comentario = document.querySelector("textarea").value;
+    if (comentario) {
+        agregarComentario(comentario);
+        document.querySelector("textarea").value = '';
+    } else {
+        alert("Por favor, ingresa un comentario.");
+    }
+});
+
+// Puntuación de estrellas
+let selectedRating = 0;
+document.querySelectorAll('.star').forEach(star => {
+    star.addEventListener('click', function() {
+        selectedRating = this.getAttribute('data-value');
+        actualizarEstrellas(selectedRating);
+    });
+});
+
+function actualizarEstrellas(rating) {
+    document.querySelectorAll('.star').forEach(star => {
+        star.innerHTML = (star.getAttribute('data-value') <= rating) ? '<i class="fa-solid fa-star"></i>' : '<i class="fa-regular fa-star"></i>';
+    });
 }
 
 
-    //Estrellas que se adaptan al comment.score
-    function generateStars(score) {
-        let stars = '';
-        for (let i = 1; i <= 5; i++) {
-            if (i <= score) {
-                stars += '<span class="star filled"><i class="fa-solid fa-star"></i></span>'; // Estrella llena (icono de FontAwesome)
-            } else {
-                stars += '<span class="star"><i class="fa-regular fa-star"></i></span>'; // Estrella vacía (icono de FontAwesome)
-            }
-        }
-        return stars;
-    }
+
      // ** Nueva función para cargar productos relacionados **
      function cargarProductosRelacionados() {
         fetch(`https://japceibal.github.io/emercado-api/cats_products/101.json`)
