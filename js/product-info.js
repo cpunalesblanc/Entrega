@@ -189,11 +189,11 @@ function actualizarEstrellas(rating) {
             contenedor.appendChild(div);
         });
     }
-    
+
+});
 
     // ** Nueva función para redirigir a la página del producto seleccionado **
     function verProducto(id) {
         localStorage.setItem('selectedProductId', id);
         window.location.href = `product-info.html?id=${id}`; // Cambia esto si la ruta es diferente
     }
-});
