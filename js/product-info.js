@@ -1,12 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Verificar si hay una sesión activa
-    const sesionActiva = localStorage.getItem("sesionActiva");
-    const usuario = localStorage.getItem("usuario");
+    //const sesionActiva = localStorage.getItem("sesionActiva");
+    //const usuario = localStorage.getItem("usuario");
 
     // Si la sesión está activa y existe un nombre de usuario, mostrarlo en la barra de navegación
-    if (sesionActiva && usuario) {
-        document.getElementById('usernameDisplay').textContent = `Bienvenido, ${usuario}`;
-    }
+    //if (sesionActiva && usuario) {
+      //  document.getElementById('usernameDisplay').textContent = `Bienvenido, ${usuario}`;
+    //}
+
+    //-----------TERMINA USUARIO EN BARA DE NAVEGACION----------------------------
 
     // Recuperar el identificador del producto del almacenamiento local
     const productId = localStorage.getItem('selectedProductId');
