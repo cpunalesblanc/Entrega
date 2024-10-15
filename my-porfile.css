@@ -1,0 +1,135 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: #f8f9fa; /* Fondo claro */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#agregamos { /*estilos para el boton de agregar al carrito*/
+    background-color: green;
+    color: white;
+    float: right;
+    border-radius: 6px;
+    margin: 5px;
+    font-size: 15px;
+  }
+  
+
+.encabezado{
+    background-color: #FEFFBA;
+    padding-bottom: 10px;
+}
+
+#datos{
+border-right: 1px solid rgba(0, 0, 0, 0.329);
+
+}
+
+#datos_dos{
+    justify-content: space-around;
+    align-items: flex-start;
+
+}
+
+
+.mb-3{
+    text-align: center;
+    font-weight: 400;
+    
+}
+
+
+
+.container {
+    margin-top: 20px;
+}
+
+form .form-control {
+    border-radius: 5px;
+}
+
+.espaciado_form{
+    padding-bottom: 30px;
+}
+
+.usuarioInfo  {
+    margin-top: 15px;
+}
+
+.usuarioInfo p {
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    padding-bottom: 15px;
+    
+}
+
+
+.usuario {
+    text-align: center;
+}
+
+
+.perfile {
+    width: flex;
+    height: 120px;
+    background-color: gray;   
+    border-radius: 10px;
+    display: block;
+}
+
+/* Botón "Guardar cambios" */
+button[type="submit"] {
+    background-color: #cebc5c;
+    color:black;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    float: right;
+    width: 160px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 51px;
+    height: 25px;
+}
+#bolita {
+    width: 50%;
+}
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #007bff;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
