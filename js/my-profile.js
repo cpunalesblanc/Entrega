@@ -13,12 +13,19 @@ if (!sesionActiva) {
 // Llenar el campo de email si existe una sesión activa
 document.getElementById("email").value = usuarioEmail || "";
 
-// Reiniciar los campos del formulario (excepto el email)
-document.getElementById("nombre").value = "";
-document.getElementById("apellido").value = "";
-document.getElementById("Telefono").value = "";
-document.getElementById("seNombre").value = "";
-document.getElementById("seApellido").value = "";
+// Recuperar y llenar los campos del formulario con datos almacenados
+const nombreGuardado = localStorage.getItem("nombre");
+const apellidoGuardado = localStorage.getItem("apellido");
+const telefonoGuardado = localStorage.getItem("telefono");
+const seNombreGuardado = localStorage.getItem("segundoNombre");
+const seApellidoGuardado = localStorage.getItem("segundoApellido");
+
+// Llenar los campos si existen datos guardados
+document.getElementById("nombre").value = nombreGuardado || "";
+document.getElementById("apellido").value = apellidoGuardado || "";
+document.getElementById("Telefono").value = telefonoGuardado || "";
+document.getElementById("seNombre").value = seNombreGuardado || "";
+document.getElementById("seApellido").value = seApellidoGuardado || "";
 
 // Validar el formulario y guardar en localStorage
 document.getElementById("registroForm").addEventListener("submit", function (event) {
