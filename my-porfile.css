@@ -127,7 +127,7 @@ button[type="submit"] {
 }
 
 input:checked + .slider {
-    background-color: #007bff;
+    background-color: green;
 }
 
 input:checked + .slider:before {
