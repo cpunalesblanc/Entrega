@@ -7,17 +7,17 @@ const sesionActiva = localStorage.getItem("sesionActiva");
 const usuario = localStorage.getItem("usuario");
 
 // Si la sesión está activa y existe un nombre de usuario, mostrarlo en la barra de navegación
+
 if (sesionActiva && usuario) {
-    spanNav.innerHTML(`<div class="dropdown"> 
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Bienvenido, ${usuario}
-        </a>) `)
-}
-
-
-
-spanNav.innerHTML()
-
-
+    usernameDisplay.innerHTML = `
+        <a class="nav-link dropdown-toggle" href="#" id="usernameDisplay" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Bienvenido, ${usuario}
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="usernameDisplay">
+            <li><a class="dropdown-item" href="/my-profile.html">Perfil</a></li>
+            <li><a class="dropdown-item" href="/cart.html">Carrito de Compras</a></li>
+        </ul>
+    `;} else {
+        window.location.href = "login.html";
+    }
 });
-
