@@ -80,57 +80,59 @@
         <h1 class="mb-3">Información Personal</h1>
         <hr class="my-3">
         <div id="datos_dos" class="row g-3">
-            
-            <div id="datos" class="col-sm-3"> <!-- Columna 1 con imagen y datos del usuario-->
-         <div class="usuario" ></div>
-         <img class="perfile" src="img/img_perfil.png" alt="perfil" > 
-         <div class="usuarioInfo">
-            <p>Información Personal</p> 
-            <p>Favoritos</p> 
-            <p>Notificaciones</p>
-            <div id="datos_3" style="display:flex; justify-content: space-between; padding-top: 100px;">
+          <div id="datos" class="col-sm-3"> <!-- Columna 1 con imagen y datos del usuario-->
+            <div class="usuario"></div>
+            <img class="perfile" src="img/img_perfil.png" alt="perfil">
+            <div class="usuarioInfo">
+              <p>Información Personal</p>
+              <p>Favoritos</p>
+              <p>Notificaciones</p>
+              <div id="datos_3" style="display:flex; justify-content: space-between; padding-top: 100px;">
                 <p style="padding-right: 20px;">Modo Nocturno</p>
-                    <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider"></span>
-                    </label>     
+                <label class="switch">
+                  <input type="checkbox">
+                  <span class="slider"></span>
+                </label>
+              </div>
             </div>
-         </div>
-  
-        </div>
-            <div class="col-sm-3">  <!-- Columna 2 para agregar algunos campos -->
-            <div class="espaciado_form">
-                <label for="nombre" class="form-label">Nombre*</label>
-                <input type="text" class="form-control" id="nombre" required>
-                <div class="valid-feedback">Muy bien!</div>
-            </div>
-            <div class="espaciado_form">
-                <label for="apellido" class="form-label">Apellido*</label>
-            <input type="text" class="form-control" id="apellido" required>
-            <div class="invalid-feedback">Por favor, ingresa tu apellido.</div>
-            </div>
-            <div class="espaciado_form">                              
-            <label for="telefono" class="form-label">Teléfono</label>
-            <input type="text" class="form-control" id="Telefono">
-            </div>                           
           </div>
-  
-          <div class="col-sm-3">  <!-- Columna 3 para agregar algunos campos y tambien contiene el boton de guardar -->
-            <div class="espaciado_form"><label for="seNombre" class="form-label">Segundo nombre</label>
-                <input type="text" class="form-control" id="seNombre"></div>
-            <div class="espaciado_form"> <label for="seApellido" class="form-label">Segundo apellido</label>
-                <input type="text" class="form-control" id="seApellido"></div>
-            <div class="espaciado_form"> <label for="email" class="form-label">E-mail*</label>
-                <input type="email" class="form-control" id="email" required>
-                <div class="invalid-feedback">Introduzca su correo.</div></div>
-                <button class="btn btn-primary" type="submit" style="margin-top: 10px;" >Guardar cambios</button>
-  <div class="invalid-feedback"></div>
-  </div>
-        
-        
+          <div class="col-sm-3"> <!-- Columna 2 para agregar algunos campos -->
+            <div class="espaciado_form">
+              <label for="nombre" class="form-label">Nombre*</label>
+              <input type="text" class="form-control" id="nombre" required>
+              <div class="valid-feedback">Muy bien!</div>
+            </div>
+            <div class="espaciado_form">
+              <label for="apellido" class="form-label">Apellido*</label>
+              <input type="text" class="form-control" id="apellido" required>
+              <div class="invalid-feedback">Por favor, ingresa tu apellido.</div>
+            </div>
+            <div class="espaciado_form">
+              <label for="telefono" class="form-label">Teléfono</label>
+              <input type="text" class="form-control" id="Telefono">
+            </div>
+          </div>
+    
+          <div class="col-sm-3"> <!-- Columna 3 para agregar algunos campos y también contiene el botón de guardar -->
+            <div class="espaciado_form">
+              <label for="seNombre" class="form-label">Segundo nombre</label>
+              <input type="text" class="form-control" id="seNombre">
+            </div>
+            <div class="espaciado_form">
+              <label for="seApellido" class="form-label">Segundo apellido</label>
+              <input type="text" class="form-control" id="seApellido">
+            </div>
+            <div class="espaciado_form">
+              <label for="email" class="form-label">E-mail*</label>
+              <input type="email" class="form-control" id="email" required>
+              <div class="invalid-feedback">Introduzca su correo.</div>
+            </div>
+            <button class="btn btn-primary" type="submit" style="margin-top: 10px;">Guardar cambios</button>
+            <div class="invalid-feedback"></div>
+          </div>
+        </div>
       </div>
-    </div>
-  </form>
+    </form>
   
   </main>
   <footer class="text-muted">
