@@ -71,10 +71,13 @@ form .form-control {
 
 .perfile {
     width: flex;
-    height: 120px;
+    height: 140px;
     background-color: gray;   
     border-radius: 10px;
     display: block;
+    
+    object-fit: cover;
+    width: 140px;
 }
 
 /* Botón "Guardar cambios" */
@@ -132,4 +135,22 @@ input:checked + .slider {
 
 input:checked + .slider:before {
     transform: translateX(26px);
+}
+
+
+/*Boton de subir imagen*/
+
+#inputImgPerfil {
+    display: none; /*Esconder el boton default*/
+}
+
+#subirImagenLabel {
+    background-color: #cebc5c; /*Convertir el label en boton*/
+    color:black;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    margin: 2px;
+    cursor: pointer;
 }

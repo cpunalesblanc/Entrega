@@ -82,7 +82,12 @@
         <div id="datos_dos" class="row g-3">
           <div id="datos" class="col-sm-3"> <!-- Columna 1 con imagen y datos del usuario-->
             <div class="usuario"></div>
-            <img class="perfile" src="img/img_perfil.png" alt="perfil">
+            
+            <img class="perfile" src="img/img_perfil.png" alt="perfil" id="imagenPerfil">
+            
+            <!-- Input subir imagen -->
+            <input type="file" accept="image/jpeg, image/png, image/jpg" id="inputImgPerfil">
+            <label for="inputImgPerfil" id="subirImagenLabel">Actualizar foto</label>
             <div class="usuarioInfo">
               <p>Información Personal</p>
               <p>Favoritos</p>

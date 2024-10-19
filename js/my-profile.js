@@ -95,3 +95,26 @@ function limpiarErrores() {
 }
 });
   
+
+// Cambiar foto de perfil desde la computadora
+
+const inputImg = document.getElementById("inputImgPerfil");
+const imagenPerfil = document.getElementById("imagenPerfil");
+
+inputImg.addEventListener('change', function() {
+    imagenPerfil.src = URL.createObjectURL(inputImg.files[0]); //cambiar src de imagen
+
+    const reader = new FileReader();
+    reader.addEventListener('load', () => {
+        localStorage.setItem('imagenPerfil', reader.result); //setear local storage
+    });
+
+    reader.readAsDataURL(this.files[0]);
+});
+
+window.onload = function(){
+    const fotoGuardada = localStorage.getItem('imagenPerfil');
+    if (fotoGuardada){
+        imagenPerfil.src = fotoGuardada; //llamar imagen del local storage
+    }
+}
