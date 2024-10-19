@@ -7,7 +7,7 @@ const sesionActiva = localStorage.getItem("sesionActiva");
     // Obtiene el nombre de usuario
 const usuario = localStorage.getItem("usuario");
 
-// Si la sesión está activa y existe un nombre de usuario, muestra el nombre de usuario clickeable con el menú desplegable
+// Si la sesión está activa y existe un nombre de usuario, muestra el nombre de usuario 'clickeable' para desplegar un menú
 if (sesionActiva && usuario) {
     spanNav.innerHTML = `
         <a class="nav-link dropdown-toggle" href="#" id="usernameDisplay" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -27,8 +27,8 @@ if (sesionActiva && usuario) {
 // Añadir evento para el enlace de cerrar sesión
 const cerrarSesion = document.getElementById('cerrarSesion');
 cerrarSesion.addEventListener('click', function (event) {
-    event.preventDefault(); // Evita que el enlace realice su acción predeterminada
+    event.preventDefault(); // Evita que el enlace realice su acción predeterminada (redirigir) para que antes elimine los datos
     localStorage.removeItem("sesionActiva"); // Elimina la sesión activa
     localStorage.removeItem("usuario"); // Elimina el usuario
-    window.location.href = "login.html"; // Redirige a la página de login
+    window.location.href = "login.html"; // Redirige a la página de inicio de sesión
 });
