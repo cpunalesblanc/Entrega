@@ -24,3 +24,11 @@ if (sesionActiva && usuario) {
     }
 });
 
+// Añadir evento para el enlace de cerrar sesión
+const cerrarSesion = document.getElementById('cerrarSesion');
+cerrarSesion.addEventListener('click', function (event) {
+    event.preventDefault(); // Evita que el enlace realice su acción predeterminada
+    localStorage.removeItem("sesionActiva"); // Elimina la sesión activa
+    localStorage.removeItem("usuario"); // Elimina el usuario
+    window.location.href = "login.html"; // Redirige a la página de login
+});
