@@ -14,9 +14,9 @@ if (sesionActiva && usuario) {
             Bienvenido, ${usuario}
         </a>
         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="usernameDisplay">
-            <li><a class="dropdown-item" href="/my-profile.html">Perfil</a></li>
-            <li><a class="dropdown-item" href="/cart.html">Carrito de Compras</a></li>
-            <li><a class="dropdown-item" id="cerrarSesion" href="/login.html">Cerrar sesión</a></li>
+            <li><a class="dropdown-item" href="my-profile.html">Perfil</a></li>
+            <li><a class="dropdown-item" href="cart.html">Carrito de Compras</a></li>
+            <li><a class="dropdown-item" id="cerrarSesion" href="login.html">Cerrar sesión</a></li>
         </ul>
     `;
 } else { // Si la sesión no está activa y no existe un nombre de usuario
