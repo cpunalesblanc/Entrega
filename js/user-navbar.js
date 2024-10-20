@@ -10,7 +10,7 @@ const usuario = localStorage.getItem("usuario");
 // Si la sesión está activa y existe un nombre de usuario, muestra el nombre de usuario 'clickeable' para desplegar un menú
 if (sesionActiva && usuario) {
     spanNav.innerHTML = `
-        <a class="nav-link dropdown-toggle" href="#" id="usernameDisplay" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Bienvenido, ${usuario}
         </a>
         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="usernameDisplay">
