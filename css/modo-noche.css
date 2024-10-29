@@ -3,9 +3,20 @@ html, body {
     margin: 0; 
   }
   
-  body {
+  body, .card-body, main, .container, #albumIndex, .row, .producto, footer{
     background-color: #1a1a1a; /* Fondo oscuro */
     color: white; /* Texto blanco */
+    
+  }
+
+  input, textarea, .custom-control-input {
+    background-color: #333;
+    color: white; /* Texto blanco */
+  }
+
+  .row, .list-group {
+    border-color: black;
+    border: 1px;
   }
   
   .encabezado {

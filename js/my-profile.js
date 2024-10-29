@@ -6,9 +6,9 @@ const sesionActiva = localStorage.getItem("sesionActiva");
 const usuarioEmail = localStorage.getItem("usuario");
 
 // Si la sesión no está activa, redirigir al login
-if (!sesionActiva) {
-    window.location.href = "login.html"; // Reemplazar con la ruta de tu login
-}
+//if (!sesionActiva) {
+//    window.location.href = "login.html"; // Reemplazar con la ruta de tu login
+//}
 
 // Llenar el campo de email si existe una sesión activa
 document.getElementById("email").value = usuarioEmail || "";
