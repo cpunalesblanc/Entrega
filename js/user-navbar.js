@@ -16,7 +16,7 @@ if (sesionActiva && usuario) {
         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="usernameDisplay">
             <li><a class="dropdown-item" href="my-profile.html">Perfil</a></li>
             <li><a class="dropdown-item" href="cart.html">Carrito de Compras</a></li>
-            <li><a class="dropdown-item" id="cerrarSesion" href="login.html">Cerrar sesión</a></li>
+            <li><a class="dropdown-item" id="cerrarSesion" href="#" onclick="cerrarSesion();">Cerrar sesión</a></li>
         </ul>
     `;
 } else { // Si la sesión no está activa y no existe un nombre de usuario
@@ -24,11 +24,7 @@ if (sesionActiva && usuario) {
     }
 });
 
-// Añadir evento para el enlace de cerrar sesión
-const cerrarSesion = document.getElementById('cerrarSesion');
-cerrarSesion.addEventListener('click', function (event) {
-    event.preventDefault(); // Evita que el enlace realice su acción predeterminada (redirigir) para que antes elimine los datos
-    localStorage.removeItem("sesionActiva"); // Elimina la sesión activa
-    localStorage.removeItem("usuario"); // Elimina el usuario
+function cerrarSesion (){
+    window.localStorage.clear();
     window.location.href = "login.html"; // Redirige a la página de inicio de sesión
-});
+}
