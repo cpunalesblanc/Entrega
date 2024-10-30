@@ -128,3 +128,16 @@ button {
 .bot2:hover {
   background-color: #a88e0a;
 }
+
+.containerMoneda {
+  position: absolute;
+  display: inline-block;
+  margin-top: 5px;
+  right: 10px;
+  padding: 5px;
+  font-size: 16px;
+}
+
+footer{
+  margin-top: 20em;
+}
