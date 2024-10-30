@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/carrito.css" rel="stylesheet">
 </head>
 
 
@@ -41,11 +41,57 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+     <!-- Aquí comienzo a desarrollar el carrito -->
+    <div class="encabezado"> 
+      <a href="bot" class="volvemos">volver</a>
+    </div>
+    
+    <section class="compras">
+      <h1>Compras</h1>
+      <hr class="my-3">
+      <div class="detalles">
+        <div class="producto">
+        <h2>Producto</h2>
+        <img src="" alt="">
+        <p>Detalle producto</p>
+      </div>
+
+      <div class="precio">
+        <h2>Costo</h2> 
+      </div>
+
+      <div class="cantidad">
+        <h2>Cantidad</h2>
+        <div class="botoncanti">
+        <button id="menos" onclick="stepper(this)"> - </button>  
+        <input id="canti" type="number" min="0" max="100" step="1" value="0" readonly >
+        <button id="mas" onclick="stepper(this)"> + </button> 
+         </div>
+        </div>
+      
+      <div class="subtotal">
+        <h2>Subtotal</h2>
+        <p>$500.00</p>
+      </div> 
+      <hr class="my-3">
+    
+
+      <div class="resumen">
+        <h2>Resumen de compras</h2><br>
+        <p>Subtotal </p>
+        <p>Descuentos</p>
+        <p>Total</p>
+       <div class="botonResumen">
+        <a class="bot1" href="#">FINALIZAR COMPRA</a> <br>
+        <a class="bot2" href="#">SEGUIR COMPRANDO</a>
       </div>
     </div>
+    </div>
+ <label for="moneda">Moneda</label>
+ <select name="moneda" id="moneda"></select>
+    
+    </section>
+
   </main>
   <footer class="text-muted">
     <div class="container">
