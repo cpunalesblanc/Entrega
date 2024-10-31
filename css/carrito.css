@@ -113,21 +113,21 @@ button {
 
 
 .bot1 {
+  background-color: #a88e0a;
+ }
  
-  background-color: #cebc5e; 
-}
+ .bot1:hover {
+   background-color: #007b5e;
+ }
+ 
+ .bot2 {
+   background-color: #a88e0a; 
+ }
+ 
+ .bot2:hover {
+   background-color:#007b5e ;
+ }
 
-.bot1:hover {
-  background-color: #a88e0a;
-}
-
-.bot2 {
-  background-color: #cebc5e; 
-}
-
-.bot2:hover {
-  background-color: #a88e0a;
-}
 
 .containerMoneda {
   position: absolute;
@@ -139,5 +139,5 @@ button {
 }
 
 footer{
-  margin-top: 20em;
+  margin-top: 200px;
 }
