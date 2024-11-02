@@ -46,6 +46,22 @@ document.addEventListener('DOMContentLoaded', function () {
                     imgElement.innerHTML = `<img src="${imageFolderPath}prod${productId}_${i}.jpg" alt="Imagen asociada ${i}" class="img-fluid small-image">`;
                     imgSmallContainer.appendChild(imgElement);
                 }
+
+                // Aquí agregamos el evento para el botón "Comprar"
+                document.getElementById('comprar').addEventListener('click', function() {
+                // Guardar información del producto en localStorage
+                const productToCart = {
+                id: productId,
+                name: productData.name,
+                price: productData.cost,
+                image: `${imageFolderPath}prod${productId}_1.jpg`
+            };
+                localStorage.setItem('cartItem', JSON.stringify(productToCart));
+
+                // Navegar a cart.html
+                window.location.href = 'cart.html';
+            });
+                
                 cargarProductosRelacionados(productData.category);
             })
             .catch(error => {
