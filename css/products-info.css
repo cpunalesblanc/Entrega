@@ -21,6 +21,15 @@ html, body {
   padding: 5px ;
 }
 
+#comprar { /* Estilos para el botón "Comprar" */
+  background-color: green;
+  color: white;
+  border-radius: 6px;
+  margin-top: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
 #btn-volver-listado {
   background-color: green;
   color: white;
