@@ -14,10 +14,11 @@ document.addEventListener('DOMContentLoaded', function () {
        
         // Mostrar el precio
         const preciosDiv = document.querySelector('.precios');
-        preciosDiv.innerHTML += `<p>$${product.price.toFixed(2)}</p>`; // Precio del producto
+        preciosDiv.innerHTML += `<p>${product.price.toFixed(2)}</p>`; // Precio del producto
 
         // Inicializar cantidad y subtotal
         myInput.value = 1; // Iniciar en 1
+        localStorage.setItem("cantidadArticulos", myInput.value); // Inicializa la cantidad en localStorage
         actualizarSubtotal(product.price);
 
         // Manejar cambios en la cantidad
@@ -45,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (nuevoValue >= min && nuevoValue <= max) {
             myInput.value = nuevoValue; // Actualiza el valor del input
+            localStorage.setItem("cantidadArticulos", nuevoValue); // Actualiza la cantidad en localStorage
         }
     }
 
@@ -58,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // Función para eliminar el producto del carrito
 function eliminarProducto() {
     localStorage.removeItem('cartItem'); // Eliminar el producto de localStorage
+    localStorage.removeItem('cantidadArticulos'); // Eliminar la cantidad de artículos
     mostrarMensajeCarritoVacio(); // Actualizar el DOM
 }
 
