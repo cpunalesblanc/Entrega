@@ -7,8 +7,8 @@ const sesionActiva = localStorage.getItem("sesionActiva");
     // Obtiene el nombre de usuario
 const usuario = localStorage.getItem("usuario");
 
+//Acceder a la cantidad de artículos en el carrito
 let cantidadArticulos = 0;
-// Recuperar la cantidad de artículos del carrito
 let cartItems = localStorage.getItem('cartItems');
 if (cartItems){
     const parsedCartItems = JSON.parse(cartItems);
@@ -23,7 +23,7 @@ if (sesionActiva && usuario) {
         </a>
         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="usernameDisplay">
             <li><a class="dropdown-item" href="my-profile.html">Perfil</a></li>
-            <li><a class="dropdown-item" href="cart.html">Carrito de Compras <span class="badge text-bg-success">${cantidadArticulos}</span></a></li> 
+            <li><a class="dropdown-item" href="cart.html">Carrito de Compras <span class="badge rounded-pill text bg-success">${cantidadArticulos}</span></a></li> 
             <li><a class="dropdown-item" id="cerrarSesion" href="#" onclick="cerrarSesion();">Cerrar sesión</a></li>
         </ul>
     `;
