@@ -54,3 +54,14 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('.subtotal p').textContent = `$${subtotal.toFixed(2)}`;
     }
 });
+
+// Función para eliminar el producto del carrito
+function eliminarProducto() {
+    localStorage.removeItem('cartItem'); // Eliminar el producto de localStorage
+    mostrarMensajeCarritoVacio(); // Actualizar el DOM
+}
+
+// Función para mostrar el mensaje cuando el carrito está vacío
+function mostrarMensajeCarritoVacio() {
+    document.querySelector('.compras').innerHTML = "<p class='mensaje-vacio'>No hay ningún producto cargado en el carrito.</p>";
+}
