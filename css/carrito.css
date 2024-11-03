@@ -35,13 +35,10 @@ body {
 
 /* Imagen del producto */
 .producto img {
-  width: 350px; /* Tamaño más pequeño para la imagen */
-  height: auto;
+  width: 200px; /* Tamaño más pequeño para la imagen */
   border-radius: 4px;
   margin-bottom: 10px;
 }
-
-
 
 
 .detalles {

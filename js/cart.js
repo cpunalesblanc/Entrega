@@ -1,24 +1,34 @@
+const myInput = document.getElementById("canti");
+const cartItems = JSON.parse(localStorage.getItem('cartItems')) || []; // Obtener todos los productos en el carrito
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    const myInput = document.getElementById("canti");
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || []; // Obtener todos los productos en el carrito
+    
 
     if (cartItems.length > 0) {
-        const productosDiv = document.querySelector('.productos'); // Contenedor para todos los productos
-
         // Iterar sobre cada producto y mostrarlo
         cartItems.forEach(product => {
             const productoDiv = document.createElement('div');
             const contenedorDiv = document.getElementById('itemsCarrito')
             productoDiv.classList.add('producto');
             productoDiv.innerHTML = `
-                <h2>${product.name}</h2>
-                <img src="${product.image}" alt="${product.name}">
-                <p>Precio: $${product.price.toFixed(2)}</p>
-
-                <button onclick="actualizarCantidad(${product.id})">Actualizar</button>
-                <button onclick="eliminarProducto(${product.id})">Eliminar</button>
+                <div class="row">
+                    <div class="col-6">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="col">
+                        <h2>${product.name}</h2>
+                    </div>
+                    <div class="col">
+                        <div class="botoncanti">
+                            <button id="menos" onclick="stepper(this, ${product.id})"> - </button>  
+                            <input id="canti${product.id}" type="number" min="0" max="100" step="1" value="0" readonly >
+                            <button id="mas" onclick="stepper(this, ${product.id})"> + </button> 
+                        </div>
+                    </div>
+                    <div class="col">Precio: $${product.price.toFixed(2)}
+                    </div>
+                </div>
             `;
             contenedorDiv.appendChild(productoDiv);
         });
@@ -30,11 +40,30 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+function stepper(btn, productId) {
+    let cantidadDisplay = document.getElementById(`canti${productId}`);
+    let id = btn.getAttribute("id");
+    let min = cantidadDisplay.getAttribute("min");
+    let max = cantidadDisplay.getAttribute("max");
+    let step = cantidadDisplay.getAttribute("step");
+    let val = parseInt(cantidadDisplay.value);
+    let calculoStep = (id == "mas") ? (parseInt(step)) : (parseInt(step) * -1);
+    let nuevoValue = val + calculoStep;
+    const item = cartItems.find(item => item.id === productId);
+
+    if (nuevoValue >= min && nuevoValue <= max) {
+        cantidadDisplay.value = nuevoValue; // Actualiza el valor del input
+        item.cantidad = nuevoValue;
+        localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Guarda el carrito actualizado
+        console.log(cartItems);
+        
+        //localStorage.setItem("cantidadArticulos", nuevoValue); // Actualiza la cantidad en localStorage
+    }
+}
+
 // Función para actualizar la cantidad de un producto
 function actualizarCantidad(productId) {
     const nuevaCantidad = parseInt(document.getElementById(`cantidad-${productId}).value`));
-    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    
     const item = cartItems.find(item => item.id === productId);
     if (item) {
         item.cantidad = nuevaCantidad; // Actualiza la cantidad
