@@ -7,8 +7,13 @@ const sesionActiva = localStorage.getItem("sesionActiva");
     // Obtiene el nombre de usuario
 const usuario = localStorage.getItem("usuario");
 
+let cantidadArticulos = 0;
 // Recuperar la cantidad de artículos del carrito
-const cantidadArticulos = localStorage.getItem("cantidadArticulos") || 0; // Por defecto a 0 si no hay nada
+let cartItems = localStorage.getItem('cartItems');
+if (cartItems){
+    const parsedCartItems = JSON.parse(cartItems);
+    cantidadArticulos = parsedCartItems.length;
+}
 
 // Si la sesión está activa y existe un nombre de usuario, muestra el nombre de usuario 'clickeable' para desplegar un menú
 if (sesionActiva && usuario) {
