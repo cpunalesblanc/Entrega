@@ -1,70 +1,73 @@
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const myInput = document.getElementById("canti");
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || []; // Obtener todos los productos en el carrito
 
-    // Recuperar el producto del localStorage
-    const cartItem = localStorage.getItem('cartItem');
-    if (cartItem) {
-        const product = JSON.parse(cartItem);
-        
-        // Mostrar la información del producto en el carrito
-        const productoDiv = document.querySelector('.producto');
-        productoDiv.querySelector('h2').textContent = product.name; // Nombre del producto
-        productoDiv.querySelector('img').src = product.image; // Imagen del producto
-        productoDiv.querySelector('p').textContent = 'Descripción del producto'; // Puedes agregar la descripción si la tienes
-       
-        // Mostrar el precio
-        const preciosDiv = document.querySelector('.precios');
-        preciosDiv.innerHTML += `<p>${product.price.toFixed(2)}</p>`; // Precio del producto
+    if (cartItems.length > 0) {
+        const productosDiv = document.querySelector('.productos'); // Contenedor para todos los productos
 
-        // Inicializar cantidad y subtotal
-        myInput.value = 1; // Iniciar en 1
-        localStorage.setItem("cantidadArticulos", myInput.value); // Inicializa la cantidad en localStorage
-        actualizarSubtotal(product.price);
+        // Iterar sobre cada producto y mostrarlo
+        cartItems.forEach(product => {
+            const productoDiv = document.createElement('div');
+            const contenedorDiv = document.getElementById('itemsCarrito')
+            productoDiv.classList.add('producto');
+            productoDiv.innerHTML = `
+                <h2>${product.name}</h2>
+                <img src="${product.image}" alt="${product.name}">
+                <p>Precio: $${product.price.toFixed(2)}</p>
 
-        // Manejar cambios en la cantidad
-        document.getElementById('mas').addEventListener('click', function() {
-            stepper(this);
-            actualizarSubtotal(product.price);
+                <button onclick="actualizarCantidad(${product.id})">Actualizar</button>
+                <button onclick="eliminarProducto(${product.id})">Eliminar</button>
+            `;
+            contenedorDiv.appendChild(productoDiv);
         });
 
-        document.getElementById('menos').addEventListener('click', function() {
-            stepper(this);
-            actualizarSubtotal(product.price);
-        });
+        // Inicializar subtotal
+        actualizarSubtotal();
     } else {
-        console.error("No se encontró ningún producto en el carrito.");
-    }
-
-    function stepper(btn) {
-        let id = btn.getAttribute("id");
-        let min = myInput.getAttribute("min");
-        let max = myInput.getAttribute("max");
-        let step = myInput.getAttribute("step");
-        let val = parseInt(myInput.value);
-        let calculoStep = (id == "mas") ? (parseInt(step)) : (parseInt(step) * -1);
-        let nuevoValue = val + calculoStep;
-
-        if (nuevoValue >= min && nuevoValue <= max) {
-            myInput.value = nuevoValue; // Actualiza el valor del input
-            localStorage.setItem("cantidadArticulos", nuevoValue); // Actualiza la cantidad en localStorage
-        }
-    }
-
-    function actualizarSubtotal(precio) {
-        const cantidad = parseInt(myInput.value);
-        const subtotal = precio * cantidad;
-        document.querySelector('.subtotal p').textContent = `$${subtotal.toFixed(2)}`;
+        console.error("No se encontraron productos en el carrito.");
     }
 });
 
-// Función para eliminar el producto del carrito
-function eliminarProducto() {
-    localStorage.removeItem('cartItem'); // Eliminar el producto de localStorage
-    localStorage.removeItem('cantidadArticulos'); // Eliminar la cantidad de artículos
-    mostrarMensajeCarritoVacio(); // Actualizar el DOM
+// Función para actualizar la cantidad de un producto
+function actualizarCantidad(productId) {
+    const nuevaCantidad = parseInt(document.getElementById(`cantidad-${productId}).value`));
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    
+    const item = cartItems.find(item => item.id === productId);
+    if (item) {
+        item.cantidad = nuevaCantidad; // Actualiza la cantidad
+        localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Guarda el carrito actualizado
+        actualizarSubtotal(); // Recalcula el subtotal
+    }
 }
 
-// Función para mostrar el mensaje cuando el carrito está vacío
-function mostrarMensajeCarritoVacio() {
-    document.querySelector('.compras').innerHTML = "<p class='mensaje-vacio'>No hay ningún producto cargado en el carrito.</p>";
+// Actualizar subtotal
+function actualizarSubtotal() {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    let subtotal = 0;
+    
+    cartItems.forEach(item => {
+        subtotal += item.price * item.cantidad; // Sumar al subtotal
+    });
+
+    document.querySelector('.subtotal p').textContent = subtotal.toFixed(2); // Mostrar subtotal
+}
+
+// Función para eliminar un producto del carrito
+function eliminarProducto(productId) {
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    cartItems = cartItems.filter(item => item.id !== productId); // Filtra el producto a eliminar
+    localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Guarda el carrito actualizado
+    mostrarCarrito(); // Actualiza la vista
+}
+
+// Mostrar carrito después de eliminar un producto
+function mostrarCarrito() {
+    const productosDiv = document.querySelector('.productos');
+    productosDiv.innerHTML = ''; // Limpia el contenido anterior
+    cartItems.forEach(product => {
+        // (Mostrar productos como antes...)
+    });
 }
