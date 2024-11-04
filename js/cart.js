@@ -10,25 +10,37 @@ document.addEventListener('DOMContentLoaded', function () {
         cartItems.forEach(product => {
             const productoDiv = document.createElement('div');
             const contenedorDiv = document.getElementById('itemsCarrito')
-            productoDiv.classList.add('producto');
+            productoDiv.classList.add('productos');
             productoDiv.innerHTML = `
-                <div class="row">
-                    <div class="col-6">
-                        <img src="${product.image}" alt="${product.name}">
-                    </div>
-                    <div class="col">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    <th scope="row">
+                        <img src="${product.image}" alt="${product.name}" class="w-50">
+                    </th>
+                    <td>
                         <h2>${product.name}</h2>
-                    </div>
-                    <div class="col">
+                    </td>
+                    <td>
                         <div class="botoncanti">
                             <button id="menos" onclick="stepper(this, ${product.id})"> - </button>  
                             <input id="canti${product.id}" type="number" min="0" max="100" step="1" value="0" readonly >
                             <button id="mas" onclick="stepper(this, ${product.id})"> + </button> 
                         </div>
-                    </div>
-                    <div class="col">Precio: $${product.price.toFixed(2)}
-                    </div>
-                </div>
+                    </td>
+                    <td>Precio: $${product.price.toFixed(2)}
+                    <td>
+                    </tr>
+                </tbody>
+                </table>
             `;
             contenedorDiv.appendChild(productoDiv);
         });
