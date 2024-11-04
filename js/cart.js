@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <td>
                         <div class="botoncanti">
                             <button id="menos" onclick="stepper(this, '${product.id}')"> - </button>  
-                            <input id="canti${product.id}" type="number" min="0" max="100" step="1" value="0" readonly >
+                            <input id="canti${product.id}" type="number" min="0" max="100" step="1" value="${product.cantidad}" readonly >
                             <button id="mas" onclick="stepper(this, '${product.id}')"> + </button> 
                         </div>
                     </td>
