@@ -1,5 +1,5 @@
 const myInput = document.getElementById("canti");
-const cartItems = JSON.parse(localStorage.getItem('cartItems')) || []; // Obtener todos los productos en el carrito
+let cartItems = JSON.parse(localStorage.getItem('cartItems')) || []; // Obtener todos los productos en el carrito
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const contenedorDiv = document.getElementById('itemsCarrito')
             productoDiv.classList.add('productos');
             productoDiv.innerHTML = `
-                <table class="table">
+                <table class="table" id="table${product.id}">
                     <thead>
                         <tr>
                             <th scope="col">Producto</th>
@@ -36,17 +36,19 @@ document.addEventListener('DOMContentLoaded', function () {
                             <button id="mas" onclick="stepper(this, '${product.id}')"> + </button> 
                         </div>
                     </td>
-                    <td>Precio: $${product.price.toFixed(2)}
+                    <td id="subtotal${product.id}">Precio: $${product.price.toFixed(2)}
                     <td>
                     </tr>
                 </tbody>
                 </table>
             `;
             contenedorDiv.appendChild(productoDiv);
+            actualizarSubtotal(product.id);
         });
 
         // Inicializar subtotal
-        actualizarSubtotal();
+        actualizarTotal()
+        
     } else {
         console.error("No se encontraron productos en el carrito.");
     }
@@ -54,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function stepper(btn, productId) {
     let cantidadDisplay = document.getElementById(`canti${productId}`);
+    let contenedorItem = document.getElementById(`table${productId}`);
     let id = btn.getAttribute("id");
     let min = cantidadDisplay.getAttribute("min");
     let max = cantidadDisplay.getAttribute("max");
@@ -61,18 +64,20 @@ function stepper(btn, productId) {
     let val = parseInt(cantidadDisplay.value);
     let calculoStep = (id == "mas") ? (parseInt(step)) : (parseInt(step) * -1);
     let nuevoValue = val + calculoStep;
-    const item = cartItems.find(item => item.id === productId);
-    console.log(productId);
+    let item = cartItems.find(item => item.id === productId);
+    let itemIndex = cartItems.findIndex(item => item.id === productId);
     val = item.cantidad;
 
-    if (nuevoValue >= min && nuevoValue <= max) {
+    if (nuevoValue > min && nuevoValue <= max) {
         cantidadDisplay.value = nuevoValue; // Actualiza el valor del input
         item.cantidad = nuevoValue;
-        localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Guarda el carrito actualizado
-        
-        actualizarSubtotal();
-        //localStorage.setItem("cantidadArticulos", nuevoValue); // Actualiza la cantidad en localStorage
+        actualizarSubtotal(productId);
+    } else if (nuevoValue === 0) {
+        cartItems = cartItems.toSpliced(itemIndex, 1);
+        contenedorItem.innerHTML = ``;
     }
+    actualizarTotal();
+    localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Guarda el carrito actualizado
 }
 
 // Función para actualizar la cantidad de un producto
@@ -82,13 +87,13 @@ function actualizarCantidad(productId) {
     if (item) {
         item.cantidad = nuevaCantidad; // Actualiza la cantidad
         localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Guarda el carrito actualizado
-        actualizarSubtotal(); // Recalcula el subtotal
+        actualizarSubtotal(productId); // Recalcula el subtotal
     }
 }
 
 // Actualizar subtotal
-function actualizarSubtotal() {
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+function actualizarTotal(){
     let subtotal = 0;
     
     cartItems.forEach(item => {
@@ -96,6 +101,14 @@ function actualizarSubtotal() {
     });
 
     document.querySelector('.subtotal p').textContent = subtotal.toFixed(2); // Mostrar subtotal
+}
+
+function actualizarSubtotal(productId) {
+    let subtotal = 0;
+    const item = cartItems.find(item => item.id === productId);
+    subtotal = item.price * item.cantidad; // Sumar al subtotal
+
+    document.getElementById(`subtotal${productId}`).textContent = subtotal.toFixed(2); // Mostrar subtotal
 }
 
 // Función para eliminar un producto del carrito
