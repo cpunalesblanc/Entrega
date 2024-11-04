@@ -54,11 +54,26 @@ document.addEventListener('DOMContentLoaded', function () {
                 id: productId,
                 name: productData.name,
                 price: productData.cost,
-                image: `${imageFolderPath}prod${productId}_1.jpg`
+                image: `${imageFolderPath}prod${productId}_1.jpg`,
+                cantidad: 1
             };
-                localStorage.setItem('cartItem', JSON.stringify(productToCart));
 
-                // Navegar a cart.html
+                //Cambio para el desafiate
+                let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+                const itemExistente = cartItems.find(item => item.id === productToCart.id); 
+                console.log(itemExistente);
+                if (itemExistente) { // Si el producto ya está en el carrito, actualiza la cantidad 
+                    itemExistente.cantidad++; } 
+                else { // Si no, agrega el nuevo producto al carrito 
+                    cartItems.push(productToCart); 
+                } 
+
+                localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Guarda el carrito actualizado 
+                //let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+                //cartItems.push(productToCart);
+                //localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+                console.log(cartItems);
                 window.location.href = 'cart.html';
             });
                 
@@ -216,3 +231,31 @@ function actualizarEstrellas(rating) {
         localStorage.setItem('selectedProductId', id);
         window.location.href = `product-info.html?id=${id}`; // Cambia esto si la ruta es diferente
     }
+
+    // Cambio 
+function agregarAlCarrito(producto, cantidad) { 
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || []; 
+    const itemExistente = cartItems.find(item => item.id === producto.id); 
+    if (itemExistente) { // Si el producto ya está en el carrito, actualiza la cantidad 
+        itemExistente.cantidad += cantidad; } 
+        else { // Si no, agrega el nuevo producto al carrito 
+            producto.cantidad = cantidad; // Asigna la cantidad 
+            cartItems.push(producto); } localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Guarda el carrito actualizado 
+};
+
+// Dentro del evento de "Comprar"
+//let botonComprar = document.getElementById('comprar');
+//botonComprar.addEventListener('click', function() {
+//    const cantidad = parseInt(document.getElementById('canti').value) || 1; // Obtener cantidad del input
+ //   const productToCart = {
+//        id: productId,
+//        name: productData.name,
+  //      price: productData.cost,
+   //     image: `${imageFolderPath}prod${productId}_1.jpg`
+   // };
+    
+   // agregarAlCarrito(productToCart, cantidad); // Usar la función para agregar al carrito
+
+    // Navegar a cart.html
+   // window.location.href = 'cart.html';
+//});

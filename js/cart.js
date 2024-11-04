@@ -1,67 +1,129 @@
+const myInput = document.getElementById("canti");
+let cartItems = JSON.parse(localStorage.getItem('cartItems')) || []; // Obtener todos los productos en el carrito
+
+
 document.addEventListener('DOMContentLoaded', function () {
-    const myInput = document.getElementById("canti");
+    
 
-    // Recuperar el producto del localStorage
-    const cartItem = localStorage.getItem('cartItem');
-    if (cartItem) {
-        const product = JSON.parse(cartItem);
+    if (cartItems.length > 0) {
+        // Iterar sobre cada producto y mostrarlo
+        cartItems.forEach(product => {
+            const productoDiv = document.createElement('div');
+            const contenedorDiv = document.getElementById('itemsCarrito')
+            productoDiv.classList.add('productos');
+            productoDiv.innerHTML = `
+                <table class="table" id="table${product.id}">
+                    <thead>
+                        <tr>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    <th scope="row">
+                        <img src="${product.image}" alt="${product.name}" class="w-50">
+                    </th>
+                    <td>
+                        <h2>${product.name}</h2>
+                    </td>
+                    <td>
+                        <div class="botoncanti">
+                            <button id="menos" onclick="stepper(this, '${product.id}')"> - </button>  
+                            <input id="canti${product.id}" type="number" min="0" max="100" step="1" value="${product.cantidad}" readonly >
+                            <button id="mas" onclick="stepper(this, '${product.id}')"> + </button> 
+                        </div>
+                    </td>
+                    <td id="subtotal${product.id}">Precio: $${product.price.toFixed(2)}
+                    <td>
+                    </tr>
+                </tbody>
+                </table>
+            `;
+            contenedorDiv.appendChild(productoDiv);
+            actualizarSubtotal(product.id);
+        });
+
+        // Inicializar subtotal
+        actualizarTotal()
         
-        // Mostrar la información del producto en el carrito
-        const productoDiv = document.querySelector('.producto');
-        productoDiv.querySelector('h2').textContent = product.name; // Nombre del producto
-        productoDiv.querySelector('img').src = product.image; // Imagen del producto
-        productoDiv.querySelector('p').textContent = 'Descripción del producto'; // Puedes agregar la descripción si la tienes
-       
-        // Mostrar el precio
-        const preciosDiv = document.querySelector('.precios');
-        preciosDiv.innerHTML += `<p>$${product.price.toFixed(2)}</p>`; // Precio del producto
-
-        // Inicializar cantidad y subtotal
-        myInput.value = 1; // Iniciar en 1
-        actualizarSubtotal(product.price);
-
-        // Manejar cambios en la cantidad
-        document.getElementById('mas').addEventListener('click', function() {
-            stepper(this);
-            actualizarSubtotal(product.price);
-        });
-
-        document.getElementById('menos').addEventListener('click', function() {
-            stepper(this);
-            actualizarSubtotal(product.price);
-        });
     } else {
-        console.error("No se encontró ningún producto en el carrito.");
-    }
-
-    function stepper(btn) {
-        let id = btn.getAttribute("id");
-        let min = myInput.getAttribute("min");
-        let max = myInput.getAttribute("max");
-        let step = myInput.getAttribute("step");
-        let val = parseInt(myInput.value);
-        let calculoStep = (id == "mas") ? (parseInt(step)) : (parseInt(step) * -1);
-        let nuevoValue = val + calculoStep;
-
-        if (nuevoValue >= min && nuevoValue <= max) {
-            myInput.value = nuevoValue; // Actualiza el valor del input
-        }
-    }
-
-    function actualizarSubtotal(precio) {
-        const cantidad = parseInt(myInput.value);
-        const subtotal = precio * cantidad;
-        document.querySelector('.subtotal p').textContent = `$${subtotal.toFixed(2)}`;
+        console.error("No se encontraron productos en el carrito.");
     }
 });
 
-// Función para eliminar el producto del carrito
-function eliminarProducto() {
-    localStorage.removeItem('cartItem'); // Eliminar el producto de localStorage
-    mostrarMensajeCarritoVacio(); // Actualizar el DOM
+function stepper(btn, productId) {
+    let cantidadDisplay = document.getElementById(`canti${productId}`);
+    let contenedorItem = document.getElementById(`table${productId}`);
+    let id = btn.getAttribute("id");
+    let min = cantidadDisplay.getAttribute("min");
+    let max = cantidadDisplay.getAttribute("max");
+    let step = cantidadDisplay.getAttribute("step");
+    let val = parseInt(cantidadDisplay.value);
+    let calculoStep = (id == "mas") ? (parseInt(step)) : (parseInt(step) * -1);
+    let nuevoValue = val + calculoStep;
+    let item = cartItems.find(item => item.id === productId);
+    let itemIndex = cartItems.findIndex(item => item.id === productId);
+    val = item.cantidad;
+
+    if (nuevoValue > min && nuevoValue <= max) {
+        cantidadDisplay.value = nuevoValue; // Actualiza el valor del input
+        item.cantidad = nuevoValue;
+        actualizarSubtotal(productId);
+    } else if (nuevoValue === 0) {
+        cartItems = cartItems.toSpliced(itemIndex, 1);
+        contenedorItem.innerHTML = ``;
+    }
+    actualizarTotal();
+    localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Guarda el carrito actualizado
 }
 
-// Función para mostrar el mensaje cuando el carrito está vacío
-function mostrarMensajeCarritoVacio() {
-    document.querySelector('.compras').innerHTML = "<p class='mensaje-vacio'>No hay ningún producto cargado en el carrito.</p>";
+// Función para actualizar la cantidad de un producto
+function actualizarCantidad(productId) {
+    const nuevaCantidad = parseInt(document.getElementById(`cantidad-${productId}).value`));
+    const item = cartItems.find(item => item.id === productId);
+    if (item) {
+        item.cantidad = nuevaCantidad; // Actualiza la cantidad
+        localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Guarda el carrito actualizado
+        actualizarSubtotal(productId); // Recalcula el subtotal
+    }
+}
+
+// Actualizar subtotal
+
+function actualizarTotal(){
+    let subtotal = 0;
+    
+    cartItems.forEach(item => {
+        subtotal += item.price * item.cantidad; // Sumar al subtotal
+    });
+
+    document.querySelector('.subtotal p').textContent = subtotal.toFixed(2); // Mostrar subtotal
+}
+
+function actualizarSubtotal(productId) {
+    let subtotal = 0;
+    const item = cartItems.find(item => item.id === productId);
+    subtotal = item.price * item.cantidad; // Sumar al subtotal
+
+    document.getElementById(`subtotal${productId}`).textContent = subtotal.toFixed(2); // Mostrar subtotal
+}
+
+// Función para eliminar un producto del carrito
+function eliminarProducto(productId) {
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    cartItems = cartItems.filter(item => item.id !== productId); // Filtra el producto a eliminar
+    localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Guarda el carrito actualizado
+    mostrarCarrito(); // Actualiza la vista
+}
+
+// Mostrar carrito después de eliminar un producto
+function mostrarCarrito() {
+    const productosDiv = document.querySelector('.productos');
+    productosDiv.innerHTML = ''; // Limpia el contenido anterior
+    cartItems.forEach(product => {
+        // (Mostrar productos como antes...)
+    });
 }
