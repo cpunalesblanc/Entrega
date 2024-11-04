@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     </td>
                     <td>
                         <div class="botoncanti">
-                            <button id="menos" onclick="stepper(this, ${product.id})"> - </button>  
+                            <button id="menos" onclick="stepper(this, '${product.id}')"> - </button>  
                             <input id="canti${product.id}" type="number" min="0" max="100" step="1" value="0" readonly >
-                            <button id="mas" onclick="stepper(this, ${product.id})"> + </button> 
+                            <button id="mas" onclick="stepper(this, '${product.id}')"> + </button> 
                         </div>
                     </td>
                     <td>Precio: $${product.price.toFixed(2)}
@@ -62,12 +62,14 @@ function stepper(btn, productId) {
     let calculoStep = (id == "mas") ? (parseInt(step)) : (parseInt(step) * -1);
     let nuevoValue = val + calculoStep;
     const item = cartItems.find(item => item.id === productId);
+    console.log(productId);
+    val = item.cantidad;
 
     if (nuevoValue >= min && nuevoValue <= max) {
         cantidadDisplay.value = nuevoValue; // Actualiza el valor del input
         item.cantidad = nuevoValue;
         localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Guarda el carrito actualizado
-        console.log(cartItems);
+        
         
         //localStorage.setItem("cantidadArticulos", nuevoValue); // Actualiza la cantidad en localStorage
     }
@@ -86,14 +88,14 @@ function actualizarCantidad(productId) {
 
 // Actualizar subtotal
 function actualizarSubtotal() {
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    //const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     let subtotal = 0;
     
     cartItems.forEach(item => {
         subtotal += item.price * item.cantidad; // Sumar al subtotal
     });
 
-    document.querySelector('.subtotal p').textContent = subtotal.toFixed(2); // Mostrar subtotal
+    //document.querySelector('.subtotal p').textContent = subtotal.toFixed(2); // Mostrar subtotal
 }
 
 // Función para eliminar un producto del carrito

@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const itemExistente = cartItems.find(item => item.id === productToCart.id); 
                 console.log(itemExistente);
                 if (itemExistente) { // Si el producto ya está en el carrito, actualiza la cantidad 
-                    itemExistente.cantidad += itemExistente.cantidad; } 
+                    itemExistente.cantidad++; } 
                 else { // Si no, agrega el nuevo producto al carrito 
                     cartItems.push(productToCart); 
                 } 
