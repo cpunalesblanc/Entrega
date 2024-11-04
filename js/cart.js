@@ -70,7 +70,7 @@ function stepper(btn, productId) {
         item.cantidad = nuevoValue;
         localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Guarda el carrito actualizado
         
-        
+        actualizarSubtotal();
         //localStorage.setItem("cantidadArticulos", nuevoValue); // Actualiza la cantidad en localStorage
     }
 }
@@ -88,14 +88,14 @@ function actualizarCantidad(productId) {
 
 // Actualizar subtotal
 function actualizarSubtotal() {
-    //const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     let subtotal = 0;
     
     cartItems.forEach(item => {
         subtotal += item.price * item.cantidad; // Sumar al subtotal
     });
 
-    //document.querySelector('.subtotal p').textContent = subtotal.toFixed(2); // Mostrar subtotal
+    document.querySelector('.subtotal p').textContent = subtotal.toFixed(2); // Mostrar subtotal
 }
 
 // Función para eliminar un producto del carrito
