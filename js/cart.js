@@ -127,3 +127,81 @@ function mostrarCarrito() {
         // (Mostrar productos como antes...)
     });
 }
+document.getElementById("dropdownButton").addEventListener("click", function() {
+    const dropdownContent = document.getElementById("dropdownContent");
+    dropdownContent.classList.toggle("visible");
+    dropdownContent.classList.toggle("hidden");
+});
+
+function selectOption(option) {
+    // Muestra la opción seleccionada y la guarda en localStorage
+    sessionStorage.setItem("tipoEnvio", option);
+
+    // Oculta el menú desplegable
+    const dropdownContent = document.getElementById("dropdownContent");
+    dropdownContent.classList.add("hidden");
+    dropdownContent.classList.remove("visible");
+}
+// Obtener el modal y el botón de abrir
+const modalDire = document.getElementById("addressModalDire");
+const openModalBtn = document.getElementById("openModalBtn");
+// Obtener el botón de cerrar (la X)
+const closeModalBtn = document.getElementsByClassName("close-btn")[0];
+
+// Abrir el modal cuando el usuario haga clic en el botón
+openModalBtn.onclick = function() {
+  modalDire.style.display = "block"; // Muestra el modal
+}
+
+// Cerrar el modal cuando el usuario haga clic en la X
+closeModalBtn.onclick = function() {
+  modalDire.style.display = "none"; // Oculta el modal
+}
+
+// Cerrar el modal si el usuario hace clic fuera del contenido del modal
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none"; // Si se hace clic fuera del modal, se cierra
+  }
+}
+
+// Manejar el envío del formulario de dirección de envío
+document.getElementById("addressForm").onsubmit = function(event) {
+  event.preventDefault(); // Prevenir la acción predeterminada del formulario (evita recargar la página)
+
+  // Obtener los valores de los campos del formulario
+  const department = document.getElementById("department").value;
+  const locality = document.getElementById("locality").value;
+  const street = document.getElementById("street").value;
+  const number = document.getElementById("number").value;
+  const corner = document.getElementById("corner").value;
+
+  // Guardar los datos en sessionStorage
+  sessionStorage.setItem("department", department);
+  sessionStorage.setItem("locality", locality);
+  sessionStorage.setItem("street", street);
+  sessionStorage.setItem("number", number);
+  sessionStorage.setItem("corner", corner);
+
+  // Puedes imprimir en consola para comprobar que se ha guardado
+  console.log("Dirección de Envío guardada en sessionStorage:");
+  console.log(department, locality, street, number, corner);
+
+  // Cerrar el modal después de guardar la dirección
+  modal.style.display = "none"; // Oculta el modal
+}
+
+//Modal para forma de pago
+const openModalBtn2 = document.getElementById("openModalBtn2");
+const modalPago = document.getElementById("addressModalDire");
+
+// Abrir el modal cuando el usuario haga clic en el botón
+openModalBtn2.onclick = function() {
+    modalPago.style.display = "block"; // Muestra el modal
+  }
+
+// Cerrar el modal cuando el usuario haga clic en la X
+closeModalBtn.onclick = function() {
+    modalPago.style.display = "none"; // Oculta el modal
+  }
+

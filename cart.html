@@ -45,7 +45,61 @@
      <!-- Aquí comienzo a desarrollar el carrito -->
     <div class="encabezado"> 
       <a href="bot" class="volvemos">volver</a>
-    </div>
+      <div class="dropdown">
+        <button id="dropdownButton">Tipo de envío</button>
+        <div id="dropdownContent" class="dropdown-content hidden">
+            <p onclick="selectOption('Premium 2 a 5 días (15%)')">Premium 2 a 5 días (15%)</p>
+            <p onclick="selectOption('Express 5 a 8 días (7%)')">Express 5 a 8 días (7%)</p>
+            <p onclick="selectOption('Standard 12 a 15 días (5%)')">Standard 12 a 15 días (5%)</p>
+        </div>
+      </div>
+      <!-- Botón para abrir el modal de direccion de envío-->
+<button id="openModalBtn">Agregar Dirección de Envío</button>
+
+<!-- Botón para abrir el modal de forma de pago-->
+<button id="openModalBtn2">Forma de pago</button>
+
+<!-- El Modal -->
+<div id="addressModalDire" class="modal">
+  <div class="modal-content">
+    <!-- Botón para cerrar el modal -->
+    <span class="close-btn">&times;</span>
+    <h2>Ingresa tu Dirección de Envío</h2>
+    <!-- Formulario para ingresar la dirección de envío -->
+    <form id="addressForm">
+      <!-- Campo para el Departamento -->
+      <label for="department">Departamento:</label>
+      <input type="text" id="department" name="department" required>
+      
+      <!-- Campo para la Localidad -->
+      <label for="locality">Localidad:</label>
+      <input type="text" id="locality" name="locality" required>
+      
+      <!-- Campo para la Calle -->
+      <label for="street">Calle:</label>
+      <input type="text" id="street" name="street" required>
+      
+      <!-- Campo para el Número -->
+      <label for="number">Número:</label>
+      <input type="text" id="number" name="number" required>
+      
+      <!-- Campo para la Esquina -->
+      <label for="corner">Esquina:</label>
+      <input type="text" id="corner" name="corner" required>
+      
+      <!-- Botón para enviar el formulario -->
+      <button type="submit">Guardar Dirección</button>
+    </form>
+  </div>
+</div>
+<!-- Modal de forma de pago-->
+<div id="addressModalPago" class="modal">
+  <div class="modal-content">
+    <!-- Botón para cerrar el modal -->
+    <span class="close-btn">&times;</span>
+  </div>
+</div>
+    
     
       <section class="compras">
       <h1>Compras</h1>
