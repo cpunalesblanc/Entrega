@@ -160,8 +160,8 @@ closeModalBtn.onclick = function() {
 
 // Cerrar el modal si el usuario hace clic fuera del contenido del modal
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none"; // Si se hace clic fuera del modal, se cierra
+  if (event.target == modalDire) {
+    modalDire.style.display = "none"; // Si se hace clic fuera del modal, se cierra
   }
 }
 
@@ -193,7 +193,8 @@ document.getElementById("addressForm").onsubmit = function(event) {
 
 //Modal para forma de pago
 const openModalBtn2 = document.getElementById("openModalBtn2");
-const modalPago = document.getElementById("addressModalDire");
+const modalPago = document.getElementById("modalPago");
+const closeModalPago = document.getElementById("closeBtnPago");
 
 // Abrir el modal cuando el usuario haga clic en el botón
 openModalBtn2.onclick = function() {
@@ -201,7 +202,12 @@ openModalBtn2.onclick = function() {
   }
 
 // Cerrar el modal cuando el usuario haga clic en la X
-closeModalBtn.onclick = function() {
+closeModalPago.onclick = function() {
     modalPago.style.display = "none"; // Oculta el modal
   }
-
+// Cerrar el modal si el usuario hace clic fuera del contenido del modal
+window.onclick = function(event) {
+    if (event.target == modalPago) {
+      modalPago.style.display = "none"; // Si se hace clic fuera del modal, se cierra
+    }
+  }
