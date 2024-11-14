@@ -163,6 +163,10 @@ window.onclick = function(event) {
   if (event.target == modalDire) {
     modalDire.style.display = "none"; // Si se hace clic fuera del modal, se cierra
   }
+  //Cierra también el modal de forma de pago
+  if (event.target == modalPago) {
+    modalPago.style.display = "none"; 
+  }
 }
 
 // Manejar el envío del formulario de dirección de envío
@@ -188,7 +192,7 @@ document.getElementById("addressForm").onsubmit = function(event) {
   console.log(department, locality, street, number, corner);
 
   // Cerrar el modal después de guardar la dirección
-  modal.style.display = "none"; // Oculta el modal
+  modalDire.style.display = "none"; // Oculta el modal
 }
 
 //Modal para forma de pago
@@ -205,9 +209,5 @@ openModalBtn2.onclick = function() {
 closeModalPago.onclick = function() {
     modalPago.style.display = "none"; // Oculta el modal
   }
-// Cerrar el modal si el usuario hace clic fuera del contenido del modal
-window.onclick = function(event) {
-    if (event.target == modalPago) {
-      modalPago.style.display = "none"; // Si se hace clic fuera del modal, se cierra
-    }
-  }
+
+
