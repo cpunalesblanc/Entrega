@@ -94,17 +94,20 @@
 </div>
 <!-- Modal de forma de pago-->
 <div id="modalPago" class="modal">
-  <div class="modal-content">
+  <div class="modal-content" id="modal-content-pago">
     <!-- Botón para cerrar el modal -->
     <span id="closeBtnPago" class="close-btn">&times;</span>
     <h2 class="h2Pago">Elige la forma de pago</h2>
-      <div>
+    <hr>
+      <div class="metodoPago">
         <h4 class="h4Pago">Transferencia bancaria</h4>
         <p class="pagoCondicion">Mandar número de comprobante</p>
       </div>
-      <div>
-        <h4 class="h4Pago">Tarjeta de crédito</h4></div>
+      <hr>
+      <div class="metodoPago">
+        <h4 class="h4Pago">Tarjeta de crédito</h4>
         <p class="pagoCondicion">Hasta 12 cuotas sin interés</p>
+      </div>
   </div>
 </div>
     
@@ -116,39 +119,8 @@
         <!-- Aqui se crean los items -->
       </div>
 
-      <!--
-      <div class="detalles">
-        <div class="producto">
-        <h2>Producto</h2>
-        <img src="" alt="">
-        <p>Detalle producto</p>
-      <button id="eliminar" onclick="eliminarProducto()">Eliminar producto</button>
-      </div>
-      
-      <div class="precios">
-        <h2>Costo</h2> 
-      </div>
 
-      <div class="cantidad">
-        <h2>Cantidad</h2>
-        <div class="botoncanti">
-        <button id="menos" onclick="stepper(this)"> - </button>  
-        <input id="canti" type="number" min="0" max="100" step="1" value="0" readonly >
-        <button id="mas" onclick="stepper(this)"> + </button> 
-         </div>
-        </div>
-      
-      <div class="subtotal">
-        <h2>Subtotal</h2>
-        <p>$0</p>
-      </div> 
-      <hr class="my-3">
-    -->
-
-
-
-
-
+<!-- Resumen de compra -->
       <div class="resumen">
         <h2>Resumen de compras</h2><br>
 

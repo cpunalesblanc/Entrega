@@ -278,3 +278,10 @@ footer{
   text-decoration: none;
   cursor: pointer;
 }
+/*Estilo contenido del modal de pago*/
+#modal-content-pago{
+  border-style: solid;
+  border-color: #007b5e;
+  border-width: 3px;
+}
+
