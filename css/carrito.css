@@ -285,3 +285,18 @@ footer{
   border-width: 3px;
 }
 
+.h2Pago{
+  text-align: center;
+}
+
+.opcionPago{
+  margin-left: 80px;
+}
+
+#guardarPago{
+  height: 50px;
+  width: 180px;
+  background-color: #007b5e;
+  margin-left: 455px;
+  border-radius: 4px;
+}
