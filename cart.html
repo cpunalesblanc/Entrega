@@ -42,108 +42,115 @@
     </div>
   </nav>
   <main>
-     <!-- Aquí comienzo a desarrollar el carrito -->
-    <div class="encabezado"> 
+    <!-- Aquí comienzo a desarrollar el carrito -->
+    <div class="encabezado">
       <a href="bot" class="volvemos">volver</a>
       <div class="dropdown">
         <button id="dropdownButton">Tipo de envío</button>
         <div id="dropdownContent" class="dropdown-content hidden">
-            <p onclick="selectOption('Premium 2 a 5 días (15%)')">Premium 2 a 5 días (15%)</p>
-            <p onclick="selectOption('Express 5 a 8 días (7%)')">Express 5 a 8 días (7%)</p>
-            <p onclick="selectOption('Standard 12 a 15 días (5%)')">Standard 12 a 15 días (5%)</p>
+          <p onclick="selectOption('Premium 2 a 5 días (15%)')">Premium 2 a 5 días (15%)</p>
+          <p onclick="selectOption('Express 5 a 8 días (7%)')">Express 5 a 8 días (7%)</p>
+          <p onclick="selectOption('Standard 12 a 15 días (5%)')">Standard 12 a 15 días (5%)</p>
         </div>
       </div>
       <!-- Botón para abrir el modal de direccion de envío-->
-<button id="openModalBtn">Agregar Dirección de Envío</button>
+      <button id="openModalBtn">Agregar Dirección de Envío</button>
 
-<!-- Botón para abrir el modal de forma de pago-->
-<button id="openModalBtn2">Forma de pago</button>
+      <!-- Botón para abrir el modal de forma de pago-->
+      <button id="openModalBtn2">Forma de pago</button>
 
-<!-- El Modal -->
-<div id="addressModalDire" class="modal">
-  <div class="modal-content">
-    <!-- Botón para cerrar el modal -->
-    <span class="close-btn">&times;</span>
-    <h2>Ingresa tu Dirección de Envío</h2>
-    <!-- Formulario para ingresar la dirección de envío -->
-    <form id="addressForm">
-      <!-- Campo para el Departamento -->
-      <label for="department">Departamento:</label>
-      <input type="text" id="department" name="department" required>
-      
-      <!-- Campo para la Localidad -->
-      <label for="locality">Localidad:</label>
-      <input type="text" id="locality" name="locality" required>
-      
-      <!-- Campo para la Calle -->
-      <label for="street">Calle:</label>
-      <input type="text" id="street" name="street" required>
-      
-      <!-- Campo para el Número -->
-      <label for="number">Número:</label>
-      <input type="text" id="number" name="number" required>
-      
-      <!-- Campo para la Esquina -->
-      <label for="corner">Esquina:</label>
-      <input type="text" id="corner" name="corner" required>
-      
-      <!-- Botón para enviar el formulario -->
-      <button type="submit">Guardar Dirección</button>
-    </form>
-  </div>
-</div>
-<!-- Modal de forma de pago-->
-<div id="modalPago" class="modal">
-  <div class="modal-content" id="modal-content-pago">
-    <!-- Botón para cerrar el modal -->
-    <span id="closeBtnPago" class="close-btn">&times;</span>
-    <h2 class="h2Pago">Elige la forma de pago</h2>
-    <hr>
-      <div class="metodoPago">
-        <h4 class="h4Pago">Transferencia bancaria</h4>
-        <p class="pagoCondicion">Mandar número de comprobante</p>
+      <!-- El Modal de direccion de envio -->
+      <div id="addressModalDire" class="modal">
+        <div class="modal-content">
+          <!-- Botón para cerrar el modal -->
+          <span class="close-btn">&times;</span>
+          <h2>Ingresa tu Dirección de Envío</h2>
+          <!-- Formulario para ingresar la dirección de envío -->
+          <form id="addressForm">
+            <!-- Campo para el Departamento -->
+            <label for="department">Departamento:</label>
+            <input type="text" id="department" name="department" required>
+
+            <!-- Campo para la Localidad -->
+            <label for="locality">Localidad:</label>
+            <input type="text" id="locality" name="locality" required>
+
+            <!-- Campo para la Calle -->
+            <label for="street">Calle:</label>
+            <input type="text" id="street" name="street" required>
+
+            <!-- Campo para el Número -->
+            <label for="number">Número:</label>
+            <input type="text" id="number" name="number" required>
+
+            <!-- Campo para la Esquina -->
+            <label for="corner">Esquina:</label>
+            <input type="text" id="corner" name="corner" required>
+
+            <!-- Botón para enviar el formulario -->
+            <button type="submit">Guardar Dirección</button>
+          </form>
+        </div>
       </div>
-      <hr>
-      <div class="metodoPago">
-        <h4 class="h4Pago">Tarjeta de crédito</h4>
-        <p class="pagoCondicion">Hasta 12 cuotas sin interés</p>
+      <!-- Modal de forma de pago-->
+      <div id="modalPago" class="modal">
+        <div class="modal-content" id="modal-content-pago">
+          <!-- Botón para cerrar el modal -->
+          <span id="closeBtnPago" class="close-btn">&times;</span>
+          <h2 class="h2Pago">Elige la forma de pago</h2>
+          <hr>
+          <div class="metodoPago">
+            <input type="radio" id="banco" name="metodoPago" value="banco">
+            <label for="banco">
+              <h4 class="h4Pago">Transferencia bancaria</h4>
+              <p class="pagoCondicion">Mandar número de comprobante</p>
+              <input type="text" id="comprobante-banco" placeholder="Número de comprobante" />
+            </label>
+          </div>
+          <hr>
+          <div class="metodoPago">
+            <input type="radio" id="tarjeta" name="metodoPago" value="tarjeta">
+            <label for="tarjeta">
+              <h4 class="h4Pago">Tarjeta de crédito</h4>
+              <p class="pagoCondicion">Hasta 12 cuotas sin interés</p>
+              <input type="text" id="tarjeta-numero" placeholder="Número de tarjeta" />
+            </label>
+          </div>
+        </div>
       </div>
-  </div>
-</div>
-    
-    
+
+
       <section class="compras">
-      <h1>Compras</h1>
-      <hr class="my-3">
-      <div class="container text-center" id="itemsCarrito">
-        <!-- Aqui se crean los items -->
-      </div>
+        <h1>Compras</h1>
+        <hr class="my-3">
+        <div class="container text-center" id="itemsCarrito">
+          <!-- Aqui se crean los items -->
+        </div>
 
 
-<!-- Resumen de compra -->
-      <div class="resumen">
-        <h2>Resumen de compras</h2><br>
-
-        <p>Descuentos</p>
-        <p>Total</p>
-        <div class="subtotal">
-          <p>$0</p>
-        </div> 
-       <div class="botonResumen">
-        <a class="bot1" href="#">FINALIZAR COMPRA</a> <br>
-        <a class="bot2" href="categories.html">SEGUIR COMPRANDO</a>
-      </div>
-    </div>
+        <!-- Resumen de compra -->
+        <div class="resumen">
+          <h2>Resumen de compras</h2><br>
+          <p>Descuentos</p>
+          <p>Total</p>
+          <div class="subtotal">
+            <p>$0</p>
+          </div>
+          <div class="botonResumen">
+            <a class="bot1" id="finalizarCompra" href="#">FINALIZAR COMPRA</a> <br>
+            <a class="bot2" href="categories.html">SEGUIR COMPRANDO</a>
+          </div>
+        </div>
     </div>
     <div class="containerMoneda">
       <label for="moneda">Moneda</label>
       <select name="moneda" id="Moneda">
-       <option value="UYU">UYU</option>
-       <option value="USD">USD</option>
-       <option value="EUR">EUR</option>
+        <option value="UYU">UYU</option>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
       </select>
     </div>
-    
+
     </section>
 
   </main>
@@ -152,7 +159,8 @@
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
     </div>
   </footer>
   <div id="spinner-wrapper">
