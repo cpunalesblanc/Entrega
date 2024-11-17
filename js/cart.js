@@ -180,7 +180,6 @@ document.getElementById("addressForm").onsubmit = function(event) {
   const number = document.getElementById("number").value;
   const corner = document.getElementById("corner").value;
 
-  // Guardar los datos en sessionStorage
   sessionStorage.setItem("department", department);
   sessionStorage.setItem("locality", locality);
   sessionStorage.setItem("street", street);
@@ -199,6 +198,7 @@ document.getElementById("addressForm").onsubmit = function(event) {
 const openModalBtn2 = document.getElementById("openModalBtn2");
 const modalPago = document.getElementById("modalPago");
 const closeModalPago = document.getElementById("closeBtnPago");
+const metodoPago = document.querySelector('input[name="metodoPago"]:checked');
 
 // Abrir el modal cuando el usuario haga clic en el botón
 openModalBtn2.onclick = function() {
@@ -211,3 +211,92 @@ closeModalPago.onclick = function() {
   }
 
 
+
+
+
+
+
+
+
+
+
+// Evento para finalizar la compra
+document.getElementById("finalizarCompra").addEventListener("click", function(e) {
+    e.preventDefault(); // Prevenir que la página se recargue al hacer clic
+  
+    // Validación de dirección
+    const direccionValida = validarDireccion();
+    console.log("Dirección válida:", direccionValida);
+    if (!direccionValida) {
+      alert("Por favor, completa todos los campos de dirección.");
+      return; // Detener el proceso de compra si la dirección no es válida
+    }
+  
+    // Validación de tipo de envío
+    const envioValido = validarEnvio();
+    console.log("Envío válido:", envioValido);
+    if (!envioValido) {
+      alert("Por favor, selecciona un tipo de envío.");
+      return; // Detener el proceso de compra si no se ha seleccionado el envío
+    }
+  
+    // Validación de productos
+    const productosValidos = validarProductos();
+    console.log("Productos válidos:", productosValidos);
+    if (!productosValidos) {
+      alert("La cantidad de los productos debe ser mayor a 0.");
+      return; // Detener el proceso de compra si algún producto tiene cantidad inválida
+    }
+  
+    // Validación de forma de pago
+    const pagoValido = validarPago();
+    console.log("Pago válido:", pagoValido);
+    if (!pagoValido) {
+      alert("Por favor, selecciona una forma de pago válida.");
+      return; // Detener el proceso de compra si no se ha completado la forma de pago
+    }
+  
+    // Si todo está validado correctamente, mostrar un mensaje de éxito
+    alert("¡Compra exitosa! Gracias por tu compra.");
+    
+    // Aquí podrías agregar el código para simular el envío de la compra (guardar en la base de datos, etc.)
+  });
+  
+  // Función para validar la dirección
+  function validarDireccion() {
+    const department = sessionStorage.getItem("department");
+    const locality = sessionStorage.getItem("locality");
+    const street = sessionStorage.getItem("street");
+    const number = sessionStorage.getItem("number");
+    const corner = sessionStorage.getItem("corner");
+  
+    return department && locality && street && number && corner;
+  }
+  
+  // Función para validar el tipo de envío
+  function validarEnvio() {
+    const tipoEnvio = sessionStorage.getItem("tipoEnvio");
+    return tipoEnvio && tipoEnvio !== "Tipo de envío"; // Verifica que no sea el valor predeterminado
+  }
+  
+  // Función para validar la cantidad de los productos
+  function validarProductos() {
+    return cartItems.every(item => item.cantidad > 0); // Asegura que todas las cantidades sean mayores a 0
+  }
+  
+  // Función para validar la forma de pago
+  function validarPago() {
+    const metodoPago = document.querySelector('input[name="metodoPago"]:checked');
+    if (!metodoPago) return false; // Si no se ha seleccionado ninguna forma de pago
+  
+    if (metodoPago.value === "banco") {
+      const comprobante = document.getElementById("comprobante-banco").value;
+      return comprobante !== ""; // Asegura que se haya ingresado un comprobante
+    } else if (metodoPago.value === "tarjeta") {
+      const tarjetaNumero = document.getElementById("tarjeta-numero").value;
+      return tarjetaNumero !== ""; // Asegura que se haya ingresado un número de tarjeta
+    }
+  
+    return false;
+  }
+  
