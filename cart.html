@@ -99,22 +99,27 @@
           <span id="closeBtnPago" class="close-btn">&times;</span>
           <h2 class="h2Pago">Elige la forma de pago</h2>
           <hr>
-          <div class="metodoPago">
-            <input type="radio" id="banco" name="metodoPago" value="banco">
-            <label for="banco">
+          <div class="seleccionPago">
+            <!--Opcion transferencia bancaria-->
+            <div class="opcionPago">
+              <input type="radio" id="banco" name="metodoPago" value="banco">
+              <label for="banco">
               <h4 class="h4Pago">Transferencia bancaria</h4>
               <p class="pagoCondicion">Mandar número de comprobante</p>
-              <input type="text" id="comprobante-banco" placeholder="Número de comprobante" />
-            </label>
-          </div>
+              <input type="text" id="comprobante-banco" class="condicion" placeholder="Número de comprobante" />
+              </label>
+            </div>
           <hr>
-          <div class="metodoPago">
-            <input type="radio" id="tarjeta" name="metodoPago" value="tarjeta">
-            <label for="tarjeta">
+          <!--Opcion tarjeta de crédito-->
+            <div class="opcionPago">
+              <input type="radio" id="tarjeta" name="metodoPago" value="tarjeta">
+              <label for="tarjeta">
               <h4 class="h4Pago">Tarjeta de crédito</h4>
               <p class="pagoCondicion">Hasta 12 cuotas sin interés</p>
-              <input type="text" id="tarjeta-numero" placeholder="Número de tarjeta" />
-            </label>
+              <input type="text" id="tarjeta-numero" class="condicion" placeholder="Número de tarjeta" />
+              </label>
+            </div><br>
+          <button type="button" id="guardarPago">Guardar selección</button>
           </div>
         </div>
       </div>

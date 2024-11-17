@@ -198,7 +198,7 @@ document.getElementById("addressForm").onsubmit = function(event) {
 const openModalBtn2 = document.getElementById("openModalBtn2");
 const modalPago = document.getElementById("modalPago");
 const closeModalPago = document.getElementById("closeBtnPago");
-const metodoPago = document.querySelector('input[name="metodoPago"]:checked');
+const guardarPago = document.getElementById('guardarPago');
 
 // Abrir el modal cuando el usuario haga clic en el botón
 openModalBtn2.onclick = function() {
@@ -209,6 +209,18 @@ openModalBtn2.onclick = function() {
 closeModalPago.onclick = function() {
     modalPago.style.display = "none"; // Oculta el modal
   }
+
+//Guardar elección
+  guardarPago.addEventListener('click', () => {
+    const metodoPago = document.querySelector('input[name="metodoPago"]:checked');
+    if (metodoPago) {
+      // Guardar la selección en sessionStorage
+      sessionStorage.setItem('formaPago', metodoPago.value);
+      console.log(metodoPago);
+      modalPago.style.display = 'none'; // Cerrar el modal 
+    }
+  });
+  
 
 
 
