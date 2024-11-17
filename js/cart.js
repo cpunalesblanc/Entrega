@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <thead>
                         <tr>
                             <th scope="col">Producto</th>
-                            <th scope="col">Precio</th>
+                            <th scope="col">Nombre</th>
                             <th scope="col">Cantidad</th>
                             <th scope="col">Subtotal</th>
                         </tr>
@@ -205,16 +205,6 @@ closeModalPago.onclick = function() {
     }
   });
   
-
-
-
-
-
-
-
-
-
-
 
 // Evento para finalizar la compra
 document.getElementById("finalizarCompra").addEventListener("click", function(e) {
