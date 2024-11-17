@@ -111,22 +111,6 @@ function actualizarSubtotal(productId) {
     document.getElementById(`subtotal${productId}`).textContent = subtotal.toFixed(2); // Mostrar subtotal
 }
 
-// Función para eliminar un producto del carrito
-function eliminarProducto(productId) {
-    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    cartItems = cartItems.filter(item => item.id !== productId); // Filtra el producto a eliminar
-    localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Guarda el carrito actualizado
-    mostrarCarrito(); // Actualiza la vista
-}
-
-// Mostrar carrito después de eliminar un producto
-function mostrarCarrito() {
-    const productosDiv = document.querySelector('.productos');
-    productosDiv.innerHTML = ''; // Limpia el contenido anterior
-    cartItems.forEach(product => {
-        // (Mostrar productos como antes...)
-    });
-}
 document.getElementById("dropdownButton").addEventListener("click", function() {
     const dropdownContent = document.getElementById("dropdownContent");
     dropdownContent.classList.toggle("visible");

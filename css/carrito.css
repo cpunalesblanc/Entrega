@@ -36,7 +36,7 @@ body {
 /* Imagen del producto */
 .producto img {
   /*width: 50px; /* Tamaño más pequeño para la imagen */
-  border-radius: 4px;
+  border-radius: 10px;
   margin-bottom: 10px;
 }
 
@@ -100,12 +100,6 @@ button {
   border-radius: 5px 0 0 5px;
 }
 
-.resumen h2{
-  margin-top: 20px;
-  font-weight: bold;
-  
-}
-
 .resumen{
   text-align: center;
   background-color: #d9d9d9;
@@ -114,9 +108,17 @@ button {
   width: 330px;
 }
 
+.resumen h2{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+
 .resumen p {
-  text-align: left;
-  margin-left: 20px;
+  text-align: center;
+ line-height: 12px;
 }
 
 .botonResumen{
