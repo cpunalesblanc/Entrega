@@ -300,3 +300,68 @@ document.getElementById("finalizarCompra").addEventListener("click", function(e)
     return false;
   }
   
+// Variables globales para los porcentajes de envío
+const shippingOptions = {
+  "Premium 2 a 5 días (15%)": 0.15,
+  "Express 5 a 8 días (7%)": 0.07,
+  "Standard 12 a 15 días (5%)": 0.05,
+};
+
+// Función para actualizar los costos totales
+function actualizarCostos() {
+  let subtotal = 0;
+  let shippingPercentage = 0;
+  let total = 0;
+
+  // Calcular el subtotal basado en los productos del carrito
+  cartItems.forEach((item) => {
+    subtotal += item.price * item.cantidad;
+  });
+
+  // Obtener el tipo de envío seleccionado
+  const tipoEnvio = sessionStorage.getItem("tipoEnvio");
+  if (tipoEnvio && shippingOptions[tipoEnvio] !== undefined) {
+    shippingPercentage = shippingOptions[tipoEnvio];
+  }
+
+  const shippingCost = subtotal * shippingPercentage;
+  total = subtotal + shippingCost;
+
+  // Mostrar los costos en la página
+  document.querySelector(".subtotal p").textContent = `$${subtotal.toFixed(2)}`;
+  document.querySelector(".resumen .costo-envio").textContent = `Costo de envío: $${shippingCost.toFixed(2)}`;
+  document.querySelector(".resumen .total-compra").textContent = `Total: $${total.toFixed(2)}`;
+}
+
+// Función para actualizar el subtotal de un producto
+function actualizarSubtotal(productId) {
+  const item = cartItems.find((item) => item.id === productId);
+  const subtotal = item.price * item.cantidad;
+
+  // Actualizar el subtotal del producto en la tabla
+  document.getElementById(`subtotal${productId}`).textContent = `$${subtotal.toFixed(2)}`;
+
+  // Actualizar los costos totales
+  actualizarCostos();
+}
+
+// Función para manejar cambios en el tipo de envío
+function cambiarTipoEnvio(option) {
+  sessionStorage.setItem("tipoEnvio", option);
+  actualizarCostos();
+}
+
+// Configurar el cambio de tipo de envío
+document.querySelectorAll("#dropdownContent p").forEach((option) => {
+  option.addEventListener("click", (event) => {
+    const selectedOption = event.target.textContent;
+    cambiarTipoEnvio(selectedOption);
+  });
+});
+
+// Inicializar costos cuando se carga la página
+document.addEventListener("DOMContentLoaded", () => {
+  if (cartItems.length > 0) {
+    actualizarCostos();
+  }
+});
