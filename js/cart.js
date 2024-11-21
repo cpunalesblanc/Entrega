@@ -242,8 +242,9 @@ document.getElementById("finalizarCompra").addEventListener("click", function(e)
       return; // Detener el proceso de compra si no se ha completado la forma de pago
     }
   
-    // Si todo está validado correctamente, mostrar un mensaje de éxito
+    // Si todo está validado correctamente, mostrar un mensaje de éxito y borrar cosas del local storage
     alert("¡Compra exitosa! Gracias por tu compra.");
+
     localStorage.removeItem("cartItems");
     localStorage.removeItem("tipoEnvio");
     localStorage.removeItem("selectedProductId");
