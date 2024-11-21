@@ -244,7 +244,11 @@ document.getElementById("finalizarCompra").addEventListener("click", function(e)
   
     // Si todo está validado correctamente, mostrar un mensaje de éxito
     alert("¡Compra exitosa! Gracias por tu compra.");
-    
+    localStorage.removeItem("cartItems");
+    localStorage.removeItem("tipoEnvio");
+    localStorage.removeItem("selectedProductId");
+    localStorage.removeItem("catID");
+
     // Aquí podrías agregar el código para simular el envío de la compra (guardar en la base de datos, etc.)
   });
   
