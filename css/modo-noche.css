@@ -44,3 +44,13 @@ html, body {
   .related-products h2, .product-reviews h2 {
     color: #fff; /* Títulos en blanco */
   }  
+
+  /*Cart*/
+  .compras {
+    background-color: #333;
+  }
+
+  .resumen{
+    background-color: #444;
+  }
+
