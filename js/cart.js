@@ -202,9 +202,25 @@ closeModalPago.onclick = function() {
       sessionStorage.setItem('formaPago', metodoPago.value);
       console.log(metodoPago);
       modalPago.style.display = 'none'; // Cerrar el modal 
+    } else {
+      return alert('Debes seleccionar una forma de pago');
     }
   });
   
+  //Activa el campo de texto correspondiente cuando se hace click y queda en checked el input radio
+//Los campos están inactivos por defecto antes de hacer la selección
+function activaInput (){
+  const bancoInput = document.getElementById('comprobante-banco');
+  const tarjetaInput = document.getElementById('tarjeta-numero');
+  if (document.getElementById('banco').checked){ 
+    bancoInput.disabled = false; //Se activa el campo de texto
+    tarjetaInput.disabled = true; //Se mantiene inactivo
+  } else if (document.getElementById('tarjeta').checked){
+    bancoInput.disabled = true; ////Se mantiene inactivo
+    tarjetaInput.disabled = false; //Se activa el campo de texto
+  };
+};
+
 
 // Evento para finalizar la compra
 document.getElementById("finalizarCompra").addEventListener("click", function(e) {
@@ -278,8 +294,6 @@ document.getElementById("finalizarCompra").addEventListener("click", function(e)
   // Función para validar la forma de pago
   function validarPago() {
     const metodoPago = document.querySelector('input[name="metodoPago"]:checked');
-    if (!metodoPago) return false; // Si no se ha seleccionado ninguna forma de pago
-  
     if (metodoPago.value === "banco") {
       const comprobante = document.getElementById("comprobante-banco").value;
       return comprobante !== ""; // Asegura que se haya ingresado un comprobante

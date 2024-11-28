@@ -117,28 +117,27 @@
           <div class="seleccionPago">
             <!--Opcion transferencia bancaria-->
             <div class="opcionPago">
-              <input type="radio" id="banco" name="metodoPago" value="banco">
+              <input type="radio" id="banco" name="metodoPago" value="banco" onclick="activaInput()">
               <label for="banco">
               <h4 class="h4Pago">Transferencia bancaria</h4>
               <p class="pagoCondicion">Mandar número de comprobante</p>
-              <input type="text" id="comprobante-banco" class="condicion" placeholder="Número de comprobante" />
+              <input type="text" id="comprobante-banco" class="condicion" placeholder="Número de comprobante" disabled />
               </label>
             </div>
           <hr>
           <!--Opcion tarjeta de crédito-->
             <div class="opcionPago">
-              <input type="radio" id="tarjeta" name="metodoPago" value="tarjeta">
+              <input type="radio" id="tarjeta" name="metodoPago" value="tarjeta" onclick="activaInput()">
               <label for="tarjeta">
               <h4 class="h4Pago">Tarjeta de crédito</h4>
               <p class="pagoCondicion">Hasta 12 cuotas sin interés</p>
-              <input type="text" id="tarjeta-numero" class="condicion" placeholder="Número de tarjeta" />
+              <input type="text" id="tarjeta-numero" class="condicion" placeholder="Número de tarjeta" disabled />
               </label>
             </div><br>
           <button type="button" id="guardarPago">Guardar selección</button>
           </div>
         </div>
       </div>
-
 
       <section class="compras">
         <h1>Compras</h1>

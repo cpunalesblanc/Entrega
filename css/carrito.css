@@ -211,12 +211,6 @@ footer{
   display: inline-block;
 }
 
-#dropdownButton {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
 .dropdown-content {
   display: none;
   position: absolute;
