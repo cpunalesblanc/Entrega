@@ -197,14 +197,18 @@ closeModalPago.onclick = function() {
 //Guardar elección
   guardarPago.addEventListener('click', () => {
     const metodoPago = document.querySelector('input[name="metodoPago"]:checked');
-    if (metodoPago) {
+    const bancoInput = document.getElementById('comprobante-banco');
+    const tarjetaInput = document.getElementById('tarjeta-numero');
+    if (metodoPago && bancoInput.value || tarjetaInput.value) {
       // Guardar la selección en sessionStorage
       sessionStorage.setItem('formaPago', metodoPago.value);
       console.log(metodoPago);
       modalPago.style.display = 'none'; // Cerrar el modal 
-    } else {
-      return alert('Debes seleccionar una forma de pago');
-    }
+    } else if (!metodoPago){
+      return alert ('Debes seleccionar una forma de pago')
+    } else if (bancoInput.value==="" || tarjetaInput.value===""){
+      return alert ('Por favor, completa el campo correspondiente')
+    };
   });
   
   //Activa el campo de texto correspondiente cuando se hace click y queda en checked el input radio
@@ -290,20 +294,22 @@ document.getElementById("finalizarCompra").addEventListener("click", function(e)
   function validarProductos() {
     return cartItems.every(item => item.cantidad > 0); // Asegura que todas las cantidades sean mayores a 0
   }
-  
-  // Función para validar la forma de pago
-  function validarPago() {
-    const metodoPago = document.querySelector('input[name="metodoPago"]:checked');
-    if (metodoPago.value === "banco") {
-      const comprobante = document.getElementById("comprobante-banco").value;
-      return comprobante !== ""; // Asegura que se haya ingresado un comprobante
-    } else if (metodoPago.value === "tarjeta") {
-      const tarjetaNumero = document.getElementById("tarjeta-numero").value;
-      return tarjetaNumero !== ""; // Asegura que se haya ingresado un número de tarjeta
-    }
-  
-    return false;
-  }
+    // Función para validar la forma de pago
+    //function validarPago() {
+      //const metodoPago = document.querySelector('input[name="metodoPago"]:checked');
+     // if (metodoPago.value === "banco") {
+      //  const comprobante = document.getElementById("comprobante-banco").value;
+       // return comprobante !== ""; // Asegura que se haya ingresado un comprobante
+    //  } else if (metodoPago.value === "tarjeta") {
+       // const tarjetaNumero = document.getElementById("tarjeta-numero").value;
+      // return tarjetaNumero !== ""; // Asegura que se haya ingresado un número de tarjeta
+     // }
+    
+      //return false;
+   // }
+
+
+
   
 // Variables globales para los porcentajes de envío
 const shippingOptions = {
