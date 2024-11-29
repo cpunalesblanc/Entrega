@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 <table class="table" id="table${product.id}">
                     <thead>
                         <tr>
-                            <th scope="col">Producto</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Cantidad</th>
-                            <th scope="col">Subtotal</th>
+                            <th scope="col" class='datos-pdtos-cart'>Producto</th>
+                            <th scope="col" class='datos-pdtos-cart'>Nombre</th>
+                            <th scope="col" class='datos-pdtos-cart'>Cantidad</th>
+                            <th scope="col" class='datos-pdtos-cart'>Subtotal</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,17 +27,17 @@ document.addEventListener('DOMContentLoaded', function () {
                         <img src="${product.image}" alt="${product.name}" class="w-50">
                     </th>
                     <td>
-                        <h2>${product.name}</h2>
+                        <h2 class='datos-pdtos-cart'>${product.name}</h2>
                     </td>
                     <td>
                         <div class="botoncanti">
                             <button id="menos" onclick="stepper(this, '${product.id}')"> - </button>  
-                            <input id="canti${product.id}" type="number" min="0" max="100" step="1" value="${product.cantidad}" readonly >
+                            <input class="nroCanti" id="canti${product.id}" type="number" min="0" max="100" step="1" value="${product.cantidad}" readonly >
                             <button id="mas" onclick="stepper(this, '${product.id}')"> + </button> 
                         </div>
                     </td>
-                    <td id="subtotal${product.id}">Precio: $${product.price.toFixed(2)}
-                    <td>
+                    <td id="subtotal${product.id}" class='datos-pdtos-cart'>Precio: ${product.price.toFixed(2)}
+                    </td>
                     </tr>
                 </tbody>
                 </table>
@@ -194,19 +194,19 @@ closeModalPago.onclick = function() {
     modalPago.style.display = "none"; // Oculta el modal
   }
 
-//Guardar elección
+//Guardar selección
   guardarPago.addEventListener('click', () => {
     const metodoPago = document.querySelector('input[name="metodoPago"]:checked');
     const bancoInput = document.getElementById('comprobante-banco');
     const tarjetaInput = document.getElementById('tarjeta-numero');
     if (metodoPago && bancoInput.value || tarjetaInput.value) {
-      // Guardar la selección en sessionStorage
+      // Guardar la selección en sessionStorage después de validar
       sessionStorage.setItem('formaPago', metodoPago.value);
       console.log(metodoPago);
       modalPago.style.display = 'none'; // Cerrar el modal 
-    } else if (!metodoPago){
+    } else if (!metodoPago){ //Si no hay seleccion
       return alert ('Debes seleccionar una forma de pago')
-    } else if (bancoInput.value==="" || tarjetaInput.value===""){
+    } else if (bancoInput.value==="" || tarjetaInput.value===""){ //Si no se completa el dato
       return alert ('Por favor, completa el campo correspondiente')
     };
   });
@@ -294,22 +294,6 @@ document.getElementById("finalizarCompra").addEventListener("click", function(e)
   function validarProductos() {
     return cartItems.every(item => item.cantidad > 0); // Asegura que todas las cantidades sean mayores a 0
   }
-    // Función para validar la forma de pago
-    //function validarPago() {
-      //const metodoPago = document.querySelector('input[name="metodoPago"]:checked');
-     // if (metodoPago.value === "banco") {
-      //  const comprobante = document.getElementById("comprobante-banco").value;
-       // return comprobante !== ""; // Asegura que se haya ingresado un comprobante
-    //  } else if (metodoPago.value === "tarjeta") {
-       // const tarjetaNumero = document.getElementById("tarjeta-numero").value;
-      // return tarjetaNumero !== ""; // Asegura que se haya ingresado un número de tarjeta
-     // }
-    
-      //return false;
-   // }
-
-
-
   
 // Variables globales para los porcentajes de envío
 const shippingOptions = {
