@@ -55,29 +55,37 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function stepper(btn, productId) {
-    let cantidadDisplay = document.getElementById(`canti${productId}`);
-    let contenedorItem = document.getElementById(`table${productId}`);
-    let id = btn.getAttribute("id");
-    let min = cantidadDisplay.getAttribute("min");
-    let max = cantidadDisplay.getAttribute("max");
-    let step = cantidadDisplay.getAttribute("step");
-    let val = parseInt(cantidadDisplay.value);
-    let calculoStep = (id == "mas") ? (parseInt(step)) : (parseInt(step) * -1);
-    let nuevoValue = val + calculoStep;
-    let item = cartItems.find(item => item.id === productId);
-    let itemIndex = cartItems.findIndex(item => item.id === productId);
-    val = item.cantidad;
+  let cantidadDisplay = document.getElementById(`canti${productId}`);
+  let contenedorItem = document.getElementById(`table${productId}`);
+  let id = btn.getAttribute("id");
+  let min = parseInt(cantidadDisplay.getAttribute("min"));
+  let max = parseInt(cantidadDisplay.getAttribute("max"));
+  let step = parseInt(cantidadDisplay.getAttribute("step"));
+  let val = parseInt(cantidadDisplay.value);
+  let calculoStep = (id == "mas") ? step : -step;
+  let nuevoValue = val + calculoStep;
 
-    if (nuevoValue > min && nuevoValue <= max) {
-        cantidadDisplay.value = nuevoValue; // Actualiza el valor del input
-        item.cantidad = nuevoValue;
-        actualizarSubtotal(productId);
-    } else if (nuevoValue === 0) {
-        cartItems = cartItems.toSpliced(itemIndex, 1);
-        contenedorItem.innerHTML = ``;
-    }
-    actualizarTotal();
-    localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Guarda el carrito actualizado
+  // Verificamos que la nueva cantidad esté dentro de los límites
+  if (nuevoValue >= min && nuevoValue <= max) {
+      cantidadDisplay.value = nuevoValue; // Actualizamos el valor en el input
+      // Buscamos el producto en el carrito y actualizamos la cantidad
+      let item = cartItems.find(item => item.id === productId);
+      if (item) {
+          item.cantidad = nuevoValue; // Actualizamos la cantidad del producto
+      }
+  }
+
+  // Si la cantidad es 0, eliminamos el producto
+  if (nuevoValue === 0) {
+      cartItems = cartItems.filter(item => item.id !== productId); // Eliminar producto
+      contenedorItem.remove(); // Eliminar fila de la tabla
+  }
+
+  // Actualizar total
+  actualizarTotal();
+
+  // Guardar los cambios en localStorage
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
 }
 
 // Función para actualizar la cantidad de un producto
@@ -88,28 +96,37 @@ function actualizarCantidad(productId) {
         item.cantidad = nuevaCantidad; // Actualiza la cantidad
         localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Guarda el carrito actualizado
         actualizarSubtotal(productId); // Recalcula el subtotal
-    }
-}
+    };
+};
 
-// Actualizar subtotal
+// Actualiza el total de la compra
+function actualizarTotal() {
+  let subtotal = 0;
+  // Recorremos el carrito para calcular el subtotal
+  cartItems.forEach(item => {
+      subtotal += item.price * item.cantidad; // Sumar la cantidad de cada producto multiplicado por su precio
+  });
 
-function actualizarTotal(){
-    let subtotal = 0;
-    
-    cartItems.forEach(item => {
-        subtotal += item.price * item.cantidad; // Sumar al subtotal
-    });
+  // Actualizamos el subtotal en el DOM
+  const subtotalElement = document.querySelector('.subtotal p');
+  if (subtotalElement) {
+      subtotalElement.textContent = `$${subtotal.toFixed(2)}`; // Muestra el subtotal con dos decimales
+  };
 
-    document.querySelector('.subtotal p').textContent = subtotal.toFixed(2); // Mostrar subtotal
-}
+  // Si hay otros costos adicionales (envío), se actualizan
+  actualizarCostos(subtotal);
+};
 
-function actualizarSubtotal(productId) {
-    let subtotal = 0;
-    const item = cartItems.find(item => item.id === productId);
-    subtotal = item.price * item.cantidad; // Sumar al subtotal
+// Función para actualizar costos con el envío
+function actualizarCostos(subtotal) {
+  let total = subtotal + envio;
 
-    document.getElementById(`subtotal${productId}`).textContent = subtotal.toFixed(2); // Mostrar subtotal
-}
+  const totalElement = document.querySelector('.total p');
+  if (totalElement) {
+      totalElement.textContent = `$${total.toFixed(2)}`; // Actualiza el total
+  };
+};
+
 
 document.getElementById("dropdownButton").addEventListener("click", function() {
     const dropdownContent = document.getElementById("dropdownContent");
